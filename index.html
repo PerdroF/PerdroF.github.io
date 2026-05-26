@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>项目经历展示 | Portfolio</title>
+    <meta
+      name="description"
+      content="项目经历展示：宠物心跳检测仪、智能小提琴、桌面神龛、陶瓷酒器创意设计。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f4f6f2;
+        --bg-soft: #eef2eb;
+        --card: #ffffff;
+        --text: #172023;
+        --text-soft: #4d5b5f;
+        --line: #d3ddd4;
+        --accent: #0c7b73;
+        --accent-2: #e39a1a;
+        --shadow: 0 16px 44px rgba(16, 40, 40, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: radial-gradient(circle at 86% 6%, #d7eee5 0%, transparent 30%),
+          radial-gradient(circle at 10% 94%, #f7e7c6 0%, transparent 28%), var(--bg);
+        color: var(--text);
+        font-family: "Manrope", "Noto Sans SC", sans-serif;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .wrapper {
+        width: min(1160px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.85rem 0;
+      }
+
+      .logo {
+        font-weight: 800;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .nav a {
+        font-size: 0.85rem;
+        text-decoration: none;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        color: var(--text-soft);
+        padding: 0.38rem 0.72rem;
+      }
+
+      .nav a.active,
+      .nav a:hover {
+        background: #fff;
+        color: var(--text);
+        border-color: var(--line);
+      }
+
+      .hero {
+        padding: clamp(2.2rem, 6vw, 5rem) 0 1.7rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.18fr 0.82fr;
+        gap: 1rem;
+      }
+
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        padding: clamp(1.2rem, 3vw, 2rem);
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: var(--accent);
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin: 0.45rem 0 0.35rem;
+        font-size: clamp(1.6rem, 4.6vw, 3rem);
+        line-height: 1.1;
+      }
+
+      .author {
+        margin: 0 0 0.8rem;
+        color: var(--text-soft);
+        font-size: 0.9rem;
+      }
+
+      .author-contact {
+        margin: -0.45rem 0 0.95rem;
+        color: var(--text-soft);
+        font-size: 0.86rem;
+      }
+
+      .hero p {
+        margin: 0;
+        color: var(--text-soft);
+        line-height: 1.72;
+        font-size: clamp(0.94rem, 2.1vw, 1.04rem);
+      }
+
+      .tags {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+      }
+
+      .tag {
+        font-size: 0.8rem;
+        color: var(--text-soft);
+        border: 1px solid var(--line);
+        background: #f8faf8;
+        border-radius: 999px;
+        padding: 0.34rem 0.68rem;
+      }
+
+      .hero-metrics {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .metric-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.7rem;
+      }
+
+      .metric {
+        min-height: 108px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: linear-gradient(165deg, #ffffff 0%, var(--bg-soft) 100%);
+        padding: 0.85rem 0.9rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .metric b {
+        font-size: 1.45rem;
+        line-height: 1;
+      }
+
+      .metric span {
+        margin-top: 0.4rem;
+        color: var(--text-soft);
+        font-size: 0.82rem;
+        line-height: 1.4;
+      }
+
+      .section-title {
+        margin: clamp(1.3rem, 3vw, 2.4rem) 0 0.95rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-size: clamp(1.16rem, 3vw, 1.8rem);
+      }
+
+      .section-title p {
+        margin: 0;
+        color: var(--text-soft);
+      }
+
+      .projects {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .project-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .project-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .project-content {
+        padding: clamp(1rem, 2.3vw, 1.6rem);
+      }
+
+      .project-title {
+        margin: 0;
+        font-size: clamp(1.06rem, 2.4vw, 1.48rem);
+      }
+
+      .project-title small {
+        display: block;
+        margin-top: 0.25rem;
+        color: var(--text-soft);
+        font-size: 0.84rem;
+      }
+
+      .project-summary {
+        margin: 0.7rem 0 0;
+        color: var(--text-soft);
+        line-height: 1.72;
+      }
+
+      .highlights {
+        margin: 0.75rem 0 0;
+        padding-left: 1rem;
+        line-height: 1.55;
+      }
+
+      .highlights li + li {
+        margin-top: 0.35rem;
+      }
+
+      .award-note {
+        margin-top: 0.75rem;
+        border: 1px dashed var(--accent-2);
+        border-radius: 14px;
+        background: #fffaf1;
+        color: #584419;
+        padding: 0.68rem 0.78rem;
+        line-height: 1.6;
+        font-size: 0.9rem;
+      }
+
+      .project-media {
+        border-left: 1px solid var(--line);
+        background: #f8faf7;
+        padding: 0.85rem;
+      }
+
+      .media-list {
+        display: grid;
+        gap: 0.55rem;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.48rem;
+      }
+
+      .media-item {
+        margin: 0;
+      }
+
+      .media-item img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        display: block;
+        border-radius: 10px;
+        border: 0;
+        background: transparent;
+        cursor: zoom-in;
+      }
+
+      .cover-figure img {
+        width: 100%;
+      }
+
+      .gallery-grid .media-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 170px;
+      }
+
+      .gallery-grid .media-item img {
+        width: auto;
+        max-width: 100%;
+        max-height: 170px;
+      }
+
+      .footer {
+        margin: 1.7rem 0 3rem;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .footer-inner {
+        padding: clamp(1rem, 2.4vw, 1.6rem);
+        display: block;
+      }
+
+      .footer h3 {
+        margin: 0 0 0.45rem;
+      }
+
+      .footer p {
+        margin: 0;
+        color: var(--text-soft);
+        line-height: 1.68;
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        background: rgba(10, 16, 17, 0.82);
+      }
+
+      .lightbox.show {
+        display: flex;
+      }
+
+      .lightbox-content {
+        position: relative;
+        max-width: min(96vw, 1800px);
+        max-height: 92vh;
+      }
+
+      .lightbox img {
+        max-width: 100%;
+        max-height: 92vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        display: block;
+        border-radius: 12px;
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: -0.75rem;
+        right: -0.75rem;
+        width: 2.2rem;
+        height: 2.2rem;
+        border: 0;
+        border-radius: 999px;
+        background: #fff;
+        color: #111;
+        font-size: 1.3rem;
+        cursor: pointer;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 620ms ease, transform 620ms ease;
+      }
+
+      .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .hero-entrance {
+        animation: heroRise 0.7s ease both;
+      }
+
+      .hero-entrance:nth-child(2) {
+        animation-delay: 120ms;
+      }
+
+      @keyframes heroRise {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .project-inner,
+        .footer-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .project-media {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .wrapper {
+          width: min(1160px, calc(100% - 1rem));
+        }
+
+        .metric {
+          min-height: 94px;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .gallery-grid .media-item img {
+          width: auto;
+          max-width: 100%;
+          max-height: 145px;
+        }
+
+        .gallery-grid .media-item {
+          min-height: 145px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          transition-duration: 1ms !important;
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrapper topbar-inner">
+        <div class="logo">Project Portfolio</div>
+        <nav class="nav" aria-label="Section Navigation">
+          <a href="#hero">Home</a>
+          <a href="#pet-heart">Pet Device</a>
+          <a href="#smart-violin">Smart Violin</a>
+          <a href="#desktop-shrine">Desktop Shrine</a>
+          <a href="#ceramic-liquorware">Ceramic</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrapper">
+      <section id="hero" class="hero">
+        <div class="hero-grid">
+          <article class="panel hero-entrance">
+            <p class="eyebrow">Project Showcase</p>
+            <h1>项目经历展示</h1>
+            <p class="author">作者：方舟子</p>
+            <p class="author-contact">联系方式：2357772944@qq.com</p>
+            <p>
+              聚焦智能硬件、CMF 与产品叙事，我将用户痛点转化为可落地的设计方案，并通过场景化表达连接从概念到传播的完整链路。
+            </p>
+            <div class="tags">
+              <span class="tag">Product Strategy</span>
+              <span class="tag">Industrial Design</span>
+              <span class="tag">CMF Research</span>
+              <span class="tag">Experience Narrative</span>
+            </div>
+          </article>
+          <aside class="panel hero-metrics hero-entrance" aria-label="Highlights">
+            <div class="metric-row">
+              <div class="metric">
+                <b>4</b>
+                <span>核心项目 / Selected Projects</span>
+              </div>
+              <div class="metric">
+                <b>34</b>
+                <span>图片素材 / Visual Assets</span>
+              </div>
+            </div>
+            <div class="metric-row">
+              <div class="metric">
+                <b>CES</b>
+                <span>MVP 海外传播 / Overseas Exposure</span>
+              </div>
+              <div class="metric">
+                <b>Award</b>
+                <span>陶瓷酒器国家级赛事优秀奖</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-title reveal">
+        <h2>Projects / 项目展示</h2>
+        <p>图片可点击展开全图查看</p>
+      </section>
+
+      <section id="projects" class="projects" aria-label="Projects"></section>
+
+      <section id="contact" class="footer reveal">
+        <div class="footer-inner">
+          <h3>Summary / 职业摘要</h3>
+          <p>
+            擅长从市场洞察中提炼产品机会点，并将工业设计、视觉叙事与实现可行性结合，形成可展示、可沟通、可迭代的设计成果。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <div class="lightbox-content">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close image">×</button>
+        <img id="lightboxImage" src="" alt="Preview" />
+      </div>
+    </div>
+
+    <script>
+      const projects = [
+        {
+          id: "pet-heart",
+          titleZh: "宠物心跳检测仪",
+          titleEn: "Pet Cardiac Diagnostics Device",
+          summaryZh:
+            "调研宠物医疗市场现状，以心跳异常难察觉、检测流程繁琐、费用昂贵为突破口，设计小型化与便携化产品。MVP 在 CES 获得海外广泛宣传。",
+          summaryEn:
+            "Based on pet-care market research, this concept targets three pain points: low awareness of cardiac issues, complicated examinations, and high costs. The solution is a compact, portable device, with MVP exposure at CES.",
+          highlights: [
+            "问题切入: 难觉察 + 流程繁琐 + 费用高",
+            "方案特征: 非接触监测、居家可用、数据可读",
+            "系统闭环: 硬件 + App + ECG/AI 可视化",
+            "传播成果: MVP 在 CES 获海外关注"
+          ],
+          cover: "./宠物心跳检测仪/宠物心跳检测仪 (14).jpg",
+          images: [
+            "./宠物心跳检测仪/宠物心跳检测仪 (1).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (2).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (3).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (4).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (5).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (6).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (7).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (8).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (9).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (10).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (11).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (12).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (13).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (14).jpg"
+          ]
+        },
+        {
+          id: "smart-violin",
+          titleZh: "智能小提琴",
+          titleEn: "Smart Violin",
+          summaryZh:
+            "以 LiberLive 吉他类爆款产品为出发点，针对小提琴学习门槛高、成本高的痛点，探索“键盘 + 弓弦”交互方式，融合古典气质与科技感。",
+          summaryEn:
+            "Inspired by breakout smart-instrument products, this project rethinks violin learning by combining keyboard and bow-string interactions, reducing learning barriers while balancing classical elegance and tech-forward identity.",
+          highlights: [
+            "痛点定位: 学习难度高、入门成本高",
+            "交互创新: 键盘 + 弓弦混合方案",
+            "形态语言: 古典乐器基因 + 未来科技感",
+            "配套系统: UI 支持练习与学习闭环"
+          ],
+          cover: "./智能小提琴/小提琴 (1).png",
+          images: [
+            "./智能小提琴/小提琴 (2).jpg",
+            "./智能小提琴/智能小提琴UI (1).png",
+            "./智能小提琴/智能小提琴UI (1).jpg",
+            "./智能小提琴/智能小提琴UI (2).jpg",
+            "./智能小提琴/智能小提琴UI (3).jpg"
+          ]
+        },
+        {
+          id: "desktop-shrine",
+          titleZh: "桌面神龛",
+          titleEn: "Desktop Shrine",
+          summaryZh:
+            "结合 2025 热门玄学主题与年轻人佛系生活需求，提出“数据 + 信仰”产品模式，以运势、开光、占卜为核心功能方向，设计卡通化桌面小佛龛。",
+          summaryEn:
+            "This concept blends contemporary spiritual trends with calm-lifestyle needs, proposing a data-plus-belief model centered on luck, blessing rituals, and divination in a compact desktop companion form.",
+          highlights: [
+            "趋势结合: 年轻人情绪需求与玄学语境",
+            "产品定位: 桌面陪伴型情绪疗愈装置",
+            "体验方向: 运势、占卜与仪式感交互",
+            "视觉特征: 微缩建筑感与氛围灯效"
+          ],
+          cover: "./桌面神龛/桌面神龛 (4).jpg",
+          images: [
+            "./桌面神龛/桌面神龛 (1).jpg",
+            "./桌面神龛/桌面神龛 (2).jpg",
+            "./桌面神龛/桌面神龛 (3).jpg",
+            "./桌面神龛/桌面神龛 (4).jpg",
+            "./桌面神龛/桌面神龛 (5).jpg",
+            "./桌面神龛/桌面神龛 (6).jpg"
+          ]
+        },
+        {
+          id: "ceramic-liquorware",
+          titleZh: "陶瓷酒器创意设计",
+          titleEn: "Ceramic Liquorware Creative Design",
+          summaryZh:
+            "独立设计师项目，参赛作品获中国酒器产业协会优秀奖。围绕酒瓶、分酒器、酒杯开展造型与表面设计，深入研究釉色、肌理与烧成工艺。",
+          summaryEn:
+            "An independent design project recognized by the China Liquorware Industry Association. It covers bottle, sharing-pitcher, and cup design with deep study in glaze color, texture, and firing craftsmanship.",
+          highlights: [
+            "奖项成果: 国家级陶瓷酒器设计赛事优秀奖",
+            "造型范围: 酒瓶、分酒器、酒杯成套化",
+            "表面语言: 釉面、纹样、陶瓷肌理表达",
+            "能力迁移: 材质研究可延展至汽车内饰 CMF"
+          ],
+          awardNote:
+            "中国酒器产业协会·优秀奖 | 材质研究经验可迁移至汽车内饰高端 CMF 开发。",
+          cover: "./陶瓷酒器创意设计/陶瓷酒器 (5)主图1.jpg",
+          images: [
+            "./陶瓷酒器创意设计/陶瓷酒器 (1).jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (2).jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (3).jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (4)主图2.jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (5)主图1.jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (6)主图3.jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (7).jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (8).jpg"
+          ]
+        }
+      ];
+
+      const projectRoot = document.getElementById("projects");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImage = document.getElementById("lightboxImage");
+      const lightboxClose = document.getElementById("lightboxClose");
+
+      function makeImageAlt(project, index) {
+        return `${project.titleZh} image ${index + 1}`;
+      }
+
+      function openLightbox(src, alt) {
+        lightboxImage.src = src;
+        lightboxImage.alt = alt;
+        lightbox.classList.add("show");
+        lightbox.setAttribute("aria-hidden", "false");
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("show");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImage.src = "";
+      }
+
+      function renderProjects(data) {
+        data.forEach((project) => {
+          const card = document.createElement("article");
+          card.className = "project-card reveal";
+          card.id = project.id;
+
+          const galleryImages = project.images.filter((src) => src !== project.cover);
+          const coverHtml = `
+            <figure class="media-item cover-figure">
+              <img loading="lazy" decoding="async" src="${project.cover}" alt="${makeImageAlt(
+            project,
+            0
+          )}" data-expandable="true" />
+            </figure>
+          `;
+          const galleryHtml = galleryImages
+            .map(
+              (src, index) => `
+                <figure class="media-item">
+                  <img loading="lazy" decoding="async" src="${src}" alt="${makeImageAlt(
+                    project,
+                    index + 1
+                  )}" data-expandable="true" />
+                </figure>
+              `
+            )
+            .join("");
+
+          card.innerHTML = `
+            <div class="project-inner">
+              <div class="project-content">
+                <h3 class="project-title">${project.titleZh}<small>${project.titleEn}</small></h3>
+                <p class="project-summary"><strong>ZH:</strong> ${project.summaryZh}</p>
+                <p class="project-summary"><strong>EN:</strong> ${project.summaryEn}</p>
+                <ul class="highlights">
+                  ${project.highlights.map((x) => `<li>${x}</li>`).join("")}
+                </ul>
+                ${project.awardNote ? `<div class="award-note">${project.awardNote}</div>` : ""}
+              </div>
+              <div class="project-media">
+                <div class="media-list">
+                  ${coverHtml}
+                  <div class="gallery-grid">
+                    ${galleryHtml}
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          projectRoot.appendChild(card);
+        });
+      }
+
+      function setupImageExpand() {
+        document.querySelectorAll("img[data-expandable='true']").forEach((img) => {
+          img.addEventListener("click", () => openLightbox(img.src, img.alt));
+        });
+
+        lightboxClose.addEventListener("click", closeLightbox);
+        lightbox.addEventListener("click", (event) => {
+          if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && lightbox.classList.contains("show")) {
+            closeLightbox();
+          }
+        });
+      }
+
+      function setupReveal() {
+        const revealItems = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+        );
+        revealItems.forEach((el) => observer.observe(el));
+      }
+
+      function setupScrollSpy() {
+        const links = [...document.querySelectorAll(".nav a")];
+        const idToLink = new Map(
+          links.map((link) => [link.getAttribute("href").slice(1), link])
+        );
+        const sections = [...document.querySelectorAll("main section[id], article[id]")];
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              links.forEach((link) => link.classList.remove("active"));
+              const target = idToLink.get(entry.target.id);
+              if (target) target.classList.add("active");
+            });
+          },
+          { threshold: 0.45 }
+        );
+        sections.forEach((section) => observer.observe(section));
+      }
+
+      renderProjects(projects);
+      setupImageExpand();
+      setupReveal();
+      setupScrollSpy();
+    </script>
+  </body>
+</html>
