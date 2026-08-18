@@ -559,11 +559,11 @@
           <aside class="panel hero-metrics hero-entrance" aria-label="Highlights">
             <div class="metric-row">
               <div class="metric">
-                <b>11</b>
+                <b>12</b>
                 <span>核心项目 / Selected Projects</span>
               </div>
               <div class="metric">
-                <b>65</b>
+                <b>76</b>
                 <span>图片素材 / Visual Assets</span>
               </div>
             </div>
@@ -609,9 +609,9 @@
       const categories = [
         {
           id: "cat-hardware",
-          zh: "智能硬件产品",
-          en: "Smart Hardware",
-          desc: "从用户痛点出发的智能产品概念、硬件系统与交互设计"
+          zh: "智能产品与交互设计",
+          en: "Smart Products & Interaction",
+          desc: "智能硬件产品概念与 UI/UX 交互设计"
         },
         {
           id: "cat-brand",
@@ -635,44 +635,28 @@
 
       const projects = [
         {
-          id: "pet-heart",
-          category: "cat-hardware",
-          titleZh: "宠物心跳检测仪",
-          titleEn: "Pet Cardiac Diagnostics Device",
-          summaryZh:
-            "调研宠物医疗市场现状，以心跳异常难察觉、检测流程繁琐、费用昂贵为突破口，设计小型化与便携化产品。MVP 在 CES 获得海外广泛宣传。",
-          summaryEn:
-            "Based on pet-care market research, this concept targets three pain points: low awareness of cardiac issues, complicated examinations, and high costs. The solution is a compact, portable device, with MVP exposure at CES.",
-          highlights: [
-            "问题切入: 难觉察 + 流程繁琐 + 费用高",
-            "方案特征: 非接触监测、居家可用、数据可读",
-            "系统闭环: 硬件 + App + ECG/AI 可视化",
-            "传播成果: MVP 在 CES 获海外关注"
-          ],
-          cover: "./宠物心跳检测仪/宠物心跳检测仪 (14).jpg",
-          images: [
-            "./宠物心跳检测仪/宠物心跳检测仪 (14).jpg",
-            "./宠物心跳检测仪/宠物心跳检测仪 (3).jpg",
-            "./宠物心跳检测仪/宠物心跳检测仪 (11).jpg"
-          ]
-        },
-        {
           id: "smart-violin",
           category: "cat-hardware",
-          titleZh: "智能小提琴",
-          titleEn: "Smart Violin",
+          titleZh: "Lumivox 智能小提琴 UI 设计",
+          titleEn: "Lumivox Smart Violin UI Design",
           summaryZh:
-            "以 LiberLive 吉他类爆款产品为出发点，针对小提琴学习门槛高、成本高的痛点，探索“键盘 + 弓弦”交互方式，融合古典气质与科技感。",
+            "Lumivox 光音——面向小提琴初学者的智能学习系统。从用户调研、痛点拆解到低保真原型与高保真 UI 输出，完整呈现从 63% 放弃率洞察到 LED 智能指板、动作传感器、实时音准可视化与社区激励的产品设计链路。",
           summaryEn:
-            "Inspired by breakout smart-instrument products, this project rethinks violin learning by combining keyboard and bow-string interactions, reducing learning barriers while balancing classical elegance and tech-forward identity.",
+            "Lumivox is a smart violin learning system addressing the 63% dropout rate among beginners. The full design process spans user research, problem breakdown, lo-fi wireframes, storyboards, and a polished dark-mode UI with real-time pitch analysis and gamified practice.",
           highlights: [
-            "痛点定位: 学习难度高、入门成本高",
-            "交互创新: 键盘 + 弓弦混合方案",
-            "形态语言: 古典乐器基因 + 未来科技感",
-            "配套系统: UI 支持练习与学习闭环"
+            "用户调研: 512 份问卷 + 3 类用户画像 + 体验趋势分析",
+            "痛点拆解: 无品格定位、弓控挑战、缺乏反馈、情感挫败",
+            "功能架构: 智能LED指板 + 动作传感器 + 音准可视化 + 社区",
+            "设计产出: 低保真原型 + 故事板 + 9 屏高保真 UI + 设计规范"
           ],
-          cover: "./智能小提琴/小提琴 (1).jpg",
+          cover: "./智能小提琴/Lumivox小提琴UI (1).jpg",
           images: [
+            "./智能小提琴/Lumivox小提琴UI (1).jpg",
+            "./智能小提琴/Lumivox小提琴UI (2).jpg",
+            "./智能小提琴/Lumivox小提琴UI (3).jpg",
+            "./智能小提琴/Lumivox小提琴UI (4).jpg",
+            "./智能小提琴/Lumivox小提琴UI (5).jpg",
+            "./智能小提琴/小提琴 (1).jpg",
             "./智能小提琴/小提琴 (2).jpg",
             "./智能小提琴/智能小提琴UI (1).jpg",
             "./智能小提琴/智能小提琴UI (2).jpg",
@@ -685,7 +669,7 @@
           titleZh: "桌面神龛",
           titleEn: "Desktop Shrine",
           summaryZh:
-            "结合 2025 热门玄学主题与年轻人佛系生活需求，提出“数据 + 信仰”产品模式，以运势、开光、占卜为核心功能方向，设计卡通化桌面小佛龛。",
+            "结合 2025 热门玄学主题与年轻人佛系生活需求，提出「数据 + 信仰」产品模式，以运势、开光、占卜为核心功能方向，设计卡通化桌面小佛龛。",
           summaryEn:
             "This concept blends contemporary spiritual trends with calm-lifestyle needs, proposing a data-plus-belief model centered on luck, blessing rituals, and divination in a compact desktop companion form.",
           highlights: [
@@ -705,16 +689,74 @@
           ]
         },
         {
+          id: "pet-medical",
+          category: "cat-brand",
+          titleZh: "Amopaw 宠物医疗品牌设计",
+          titleEn: "Amopaw Pet Medical Brand Design",
+          summaryZh:
+            "Amopaw 宠物医疗品牌设计项目，围绕宠物心跳异常难察觉、检测流程繁琐、费用昂贵三大痛点，打造小型化便携化产品体系，MVP 在 CES 获得海外广泛关注。",
+          summaryEn:
+            "Amopaw is a pet medical brand targeting three pain points: low awareness of cardiac issues, complicated examinations, and high costs. The compact, portable device system gained overseas exposure at CES.",
+          highlights: [
+            "问题切入: 难觉察 + 流程繁琐 + 费用高",
+            "方案特征: 非接触监测、居家可用、数据可读",
+            "系统闭环: 硬件 + App + ECG/AI 可视化",
+            "传播成果: MVP 在 CES 获海外关注"
+          ],
+          cover: "./宠物心跳检测仪/宠物医疗品牌 (1).jpg",
+          images: [
+            "./宠物心跳检测仪/宠物医疗品牌 (1).jpg",
+            "./宠物心跳检测仪/宠物医疗品牌 (2).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (14).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (3).jpg",
+            "./宠物心跳检测仪/宠物心跳检测仪 (11).jpg"
+          ]
+        },
+        {
+          id: "serene-porcelain",
+          category: "cat-brand",
+          titleZh: "Serene Porcelain 品牌手册 & 酒瓶设计",
+          titleEn: "Serene Porcelain Brand Manual & Bottle Design",
+          summaryZh:
+            "Serene Porcelain 品牌手册与酒瓶设计项目，围绕「醉翁之意」主题开展陶瓷酒瓶、分酒器、酒杯成套化造型与表面设计，深入研究釉色、肌理与烧成工艺，参赛作品获中国酒器产业协会优秀奖。",
+          summaryEn:
+            "An independent brand and product design project recognized by the China Liquorware Industry Association. It covers brand manual, bottle, sharing-pitcher, and cup design with deep study in glaze color, texture, and firing craftsmanship.",
+          highlights: [
+            "奖项成果: 国家级陶瓷酒器设计赛事优秀奖",
+            "造型范围: 品牌手册 + 酒瓶、分酒器、酒杯成套化",
+            "表面语言: 釉面、纹样、陶瓷肌理表达",
+            "能力迁移: 材质研究可延展至汽车内饰 CMF"
+          ],
+          awardNote:
+            "中国酒器产业协会·优秀奖 | 材质研究经验可迁移至汽车内饰高端 CMF 开发。",
+          cover: "./陶瓷酒器创意设计/品牌手册酒瓶 (1).jpg",
+          images: [
+            "./陶瓷酒器创意设计/品牌手册酒瓶 (1).jpg",
+            "./陶瓷酒器创意设计/品牌手册酒瓶 (2).jpg",
+            "./陶瓷酒器创意设计/品牌手册酒瓶 (3).jpg",
+            "./陶瓷酒器创意设计/品牌手册酒瓶 (4).jpg",
+            "./陶瓷酒器创意设计/品牌手册酒瓶 (5).jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (1).jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (2).jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (3).jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (4)主图2.jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (5)主图1.jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (6)主图3.jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (7).jpg",
+            "./陶瓷酒器创意设计/陶瓷酒器 (8).jpg"
+          ]
+        },
+        {
           id: "touch-coffee",
           category: "cat-brand",
           titleZh: "Touch Coffee 咖啡品牌设计",
           titleEn: "Touch Coffee Brand Identity",
           summaryZh:
-            "受“指尖触感温度”启发，打造兼具亲密感与放松氛围的咖啡品牌体验。主色调采用粉雾渐变色，柔和烟粉色营造温暖质感，呈现咖啡特有的疗愈氛围。",
+            "受「指尖触感温度」启发，打造兼具亲密感与放松氛围的咖啡品牌体验。主色调采用粉雾渐变色，柔和烟粉色营造温暖质感，呈现咖啡特有的疗愈氛围。",
           summaryEn:
             "Inspired by the warmth of a fingertip's touch, this identity builds an intimate, relaxed coffee experience. A misty-pink gradient palette carries warmth and healing moods across posters, packaging, cups, and stationery.",
           highlights: [
-            "品牌概念: “Touch to feel the warmth” 指尖温度",
+            "品牌概念: 「Touch to feel the warmth」 指尖温度",
             "视觉语言: 手部插画 × 烟雾曲线 × 咖啡豆元素",
             "色彩体系: 粉雾渐变主色调，疗愈氛围营造",
             "应用范围: 海报、名片、包装袋、外带杯成套设计"
@@ -727,64 +769,58 @@
           ]
         },
         {
+          id: "shanlian-poster",
+          category: "cat-brand",
+          titleZh: "中国善琏汉字艺术研究院海报设计",
+          titleEn: "China Shanlian Character Art Institute Poster",
+          summaryZh:
+            "为 2024 年浙江湖州善琏「港澳青少年汉字艺术与非遗多元体验活动」设计的系列文化海报，以「文明·传承与未来希望」为核心主题，融合水墨大写意、解构式汉字排版与中英双语视觉系统。",
+          summaryEn:
+            "A poster series for the 2024 Hong Kong-Macau Youth Chinese Character Art & Heritage Experience in Shanlian, Huzhou. The design fuses ink-wash calligraphy, deconstructed character typography, and bilingual layout around the theme of cultural inheritance.",
+          highlights: [
+            "活动主题: 港澳青少年汉字艺术与非遗多元体验",
+            "核心标语: 「文明·传承与未来希望」",
+            "视觉手法: 水墨大写意 + 解构式汉字排版",
+            "文化定位: 善琏湖笔之乡非遗文化国际交流"
+          ],
+          cover: "./中国善琏汉字艺术研究院/中国善琏汉字艺术研究院 (1).jpg",
+          images: [
+            "./中国善琏汉字艺术研究院/中国善琏汉字艺术研究院 (1).jpg"
+          ]
+        },
+        {
           id: "hubi-town",
           category: "cat-brand",
-          titleZh: "湖笔小镇海报与品牌设计",
+          titleZh: "湖笔小镇海报 & 品牌设计",
           titleEn: "Hubi Town Poster & Brand Design",
           summaryZh:
-            "以湖州湖笔非遗文化为核心的品牌衍生设计，以“文明传承与未来希望”为口号，将竖排书法与红橙泼墨应用于 T 恤、帆布袋、棒球帽等文旅周边。",
+            "以湖州湖笔非遗文化为核心的品牌衍生设计，涵盖文化海报、矿泉水包装与 T 恤、帆布袋、棒球帽等文旅周边，将竖排书法与红橙泼墨应用于现代产品设计。",
           summaryEn:
-            "A cultural merchandise system for Hubi Town, China's historic brush-making town. Vertical calligraphy and ink-splash graphics translate brush heritage into T-shirts, tote bags, and caps.",
+            "A cultural merchandise and packaging system for Hubi Town, China's historic brush-making town. Vertical calligraphy and ink-splash graphics translate brush heritage into posters, water bottle labels, T-shirts, tote bags, and caps.",
           highlights: [
             "文化内核: 湖笔非遗与书法美学传承",
-            "主视觉: 竖排书法标语 + 红橙泼墨飞白",
-            "应用载体: T 恤、帆布袋、棒球帽文创周边",
+            "包装设计: 矿泉水标签 + 水墨渐变山纹",
+            "文创周边: T 恤、帆布袋、棒球帽",
             "设计定位: 文旅品牌衍生品系统"
           ],
           cover: "./湖笔小镇品牌设计/湖笔小镇品牌设计 (1).jpg",
-          images: ["./湖笔小镇品牌设计/湖笔小镇品牌设计 (1).jpg"]
-        },
-        {
-          id: "ceramic-liquorware",
-          category: "cat-brand",
-          titleZh: "陶瓷酒器创意设计",
-          titleEn: "Ceramic Liquorware Creative Design",
-          summaryZh:
-            "独立设计师项目，参赛作品获中国酒器产业协会优秀奖。围绕酒瓶、分酒器、酒杯开展造型与表面设计，深入研究釉色、肌理与烧成工艺。",
-          summaryEn:
-            "An independent design project recognized by the China Liquorware Industry Association. It covers bottle, sharing-pitcher, and cup design with deep study in glaze color, texture, and firing craftsmanship.",
-          highlights: [
-            "奖项成果: 国家级陶瓷酒器设计赛事优秀奖",
-            "造型范围: 酒瓶、分酒器、酒杯成套化",
-            "表面语言: 釉面、纹样、陶瓷肌理表达",
-            "能力迁移: 材质研究可延展至汽车内饰 CMF"
-          ],
-          awardNote:
-            "中国酒器产业协会·优秀奖 | 材质研究经验可迁移至汽车内饰高端 CMF 开发。",
-          cover: "./陶瓷酒器创意设计/陶瓷酒器 (5)主图1.jpg",
           images: [
-            "./陶瓷酒器创意设计/陶瓷酒器 (1).jpg",
-            "./陶瓷酒器创意设计/陶瓷酒器 (2).jpg",
-            "./陶瓷酒器创意设计/陶瓷酒器 (3).jpg",
-            "./陶瓷酒器创意设计/陶瓷酒器 (4)主图2.jpg",
-            "./陶瓷酒器创意设计/陶瓷酒器 (5)主图1.jpg",
-            "./陶瓷酒器创意设计/陶瓷酒器 (6)主图3.jpg",
-            "./陶瓷酒器创意设计/陶瓷酒器 (7).jpg",
-            "./陶瓷酒器创意设计/陶瓷酒器 (8).jpg"
+            "./湖笔小镇品牌设计/湖笔小镇品牌设计 (1).jpg",
+            "./湖笔小镇品牌设计/湖笔小镇品牌设计 (2).jpg"
           ]
         },
         {
           id: "kundera-illustration",
           category: "cat-illustration",
-          titleZh: "昆德拉系列插画",
+          titleZh: "昆德拉系列插画作品",
           titleEn: "Kundera Series Illustration",
           summaryZh:
-            "以米兰·昆德拉文学为主题的个人插画系列，围绕“Kitsch 媚俗”“ES MUSS SEIN 必须如此”等核心概念，用蜡笔涂鸦语言转译《不能承受的生命之轻》《庆祝无意义》等作品的意象。",
+            "以米兰·昆德拉文学为主题的个人插画系列，围绕「Kitsch 媚俗」「ES MUSS SEIN 必须如此」等核心概念，用蜡笔涂鸦语言转译《不能承受的生命之轻》《庆祝无意义》等作品的意象。",
           summaryEn:
             "A personal illustration series translating Milan Kundera's literary motifs through crayon-style drawing, exploring the ideas of Kitsch and Es muss sein across his major works.",
           highlights: [
             "主题脉络: 昆德拉文学意象的视觉转译",
-            "概念表达: “Kitsch 媚俗”与“ES MUSS SEIN”",
+            "概念表达: 「Kitsch 媚俗」与「ES MUSS SEIN」",
             "媒介语言: 蜡笔 / 油画棒手绘涂鸦质感",
             "色彩特征: 红蓝黄高饱和三原色体系"
           ],
@@ -794,9 +830,7 @@
             "./昆德拉系列插画/昆德拉系列插画 (2).jpg",
             "./昆德拉系列插画/昆德拉系列插画 (3).jpg",
             "./昆德拉系列插画/昆德拉系列插画 (4).jpg",
-            "./昆德拉系列插画/昆德拉系列插画 (5).jpg",
-            "./昆德拉系列插画/昆德拉系列插画 (6).jpg",
-            "./昆德拉系列插画/昆德拉系列插画 (7).jpg"
+            "./昆德拉系列插画/昆德拉系列插画 (5).jpg"
           ]
         },
         {
@@ -805,12 +839,12 @@
           titleZh: "蔚来 Color & Trim CMF 分析",
           titleEn: "NIO Color & Trim CMF Analysis",
           summaryZh:
-            "2026.03-05 个人研究项目。围绕蔚来“纯粹、温度、未来”的品牌风格基因，系统分析 ES8 / ES6 / ET 系列外饰“高级灰”与内饰“莫兰迪”色彩策略，结合竞品对标、用户画像与 WGSN 趋势，输出完整 CMF 研究框架。",
+            "2026.03-05 个人研究项目。围绕蔚来「纯粹、温度、未来」的品牌风格基因，系统分析 ES8 / ES6 / ET 系列外饰「高级灰」与内饰「莫兰迪」色彩策略，结合竞品对标、用户画像与 WGSN 趋势，输出完整 CMF 研究框架。",
           summaryEn:
             "An individual research project decoding NIO's design DNA: mineral-grey exteriors and Morandi-toned interiors across ES8/ES6/ET lines, built on benchmarking, user personas, and WGSN trend analysis into a complete CMF framework.",
           highlights: [
-            "品牌研究: 蔚来“纯粹 / 温度 / 未来”风格解码",
-            "外饰 CMF: “高级灰”基调 + 莫兰迪彩色系梳理",
+            "品牌研究: 蔚来「纯粹 / 温度 / 未来」风格解码",
+            "外饰 CMF: 「高级灰」基调 + 莫兰迪彩色系梳理",
             "内饰 CMF: 低饱和克制的莫兰迪配色策略",
             "研究方法: 竞品对标 + 用户画像 + WGSN 年度色趋势"
           ],
@@ -837,7 +871,7 @@
           titleZh: "鎏金匠心 CMF 主题方案",
           titleEn: "Crafted Saddle Luxury",
           summaryZh:
-            "以“温暖厚实、有手工痕迹”为调型的内饰 CMF 方案：焦糖金穿孔 Nappa 为主角，深咖麂皮、烟熏软木与深胡桃木托底，配合香槟金金属漆外饰，呈现越靠近越见工艺的豪华质感。",
+            "以「温暖厚实、有手工痕迹」为调型的内饰 CMF 方案：焦糖金穿孔 Nappa 为主角，深咖麂皮、烟熏软木与深胡桃木托底，配合香槟金金属漆外饰，呈现越靠近越见工艺的豪华质感。",
           summaryEn:
             "A warm, saddle-leather-inspired interior CMF scheme: perforated caramel-gold Nappa leads, grounded by cocoa suede, smoked cork, and dark walnut, matched with champagne-gold metallic exterior paint.",
           highlights: [
