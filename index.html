@@ -6,7 +6,7 @@
     <title>项目经历展示 | Portfolio</title>
     <meta
       name="description"
-      content="项目经历展示：宠物心跳检测仪、智能小提琴、桌面神龛、陶瓷酒器创意设计。"
+      content="项目经历展示：智能硬件、品牌视觉、插画创作与 CMF 色彩研究共 11 个设计项目。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -211,6 +211,47 @@
       .section-title p {
         margin: 0;
         color: var(--text-soft);
+      }
+
+      .category-title {
+        margin: clamp(1.2rem, 2.8vw, 2.1rem) 0 0.3rem;
+        padding: 0.95rem 1.15rem;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--accent);
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.8rem 1.4rem;
+        flex-wrap: wrap;
+        scroll-margin-top: 72px;
+      }
+
+      .category-title h3 {
+        margin: 0;
+        font-size: clamp(1.02rem, 2.2vw, 1.38rem);
+      }
+
+      .category-title h3 small {
+        display: block;
+        margin-top: 0.22rem;
+        color: var(--text-soft);
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+
+      .category-title p {
+        margin: 0;
+        color: var(--text-soft);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .project-card {
+        scroll-margin-top: 72px;
       }
 
       .projects {
@@ -486,10 +527,10 @@
         <div class="logo">Project Portfolio</div>
         <nav class="nav" aria-label="Section Navigation">
           <a href="#hero">Home</a>
-          <a href="#pet-heart">Pet Device</a>
-          <a href="#smart-violin">Smart Violin</a>
-          <a href="#desktop-shrine">Desktop Shrine</a>
-          <a href="#ceramic-liquorware">Ceramic</a>
+          <a href="#cat-hardware">Hardware</a>
+          <a href="#cat-brand">Brand</a>
+          <a href="#cat-illustration">Illustration</a>
+          <a href="#cat-cmf">CMF</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -504,11 +545,13 @@
             <p class="author">作者：方舟子</p>
             <p class="author-contact">联系方式：2357772944@qq.com</p>
             <p>
-              聚焦智能硬件、CMF 与产品叙事，我将用户痛点转化为可落地的设计方案，并通过场景化表达连接从概念到传播的完整链路。
+              聚焦智能硬件、品牌视觉、插画创作与 CMF 研究，我将用户痛点与文化洞察转化为可落地的设计方案，并通过场景化表达连接从概念到传播的完整链路。
             </p>
             <div class="tags">
               <span class="tag">Product Strategy</span>
               <span class="tag">Industrial Design</span>
+              <span class="tag">Brand Identity</span>
+              <span class="tag">Illustration</span>
               <span class="tag">CMF Research</span>
               <span class="tag">Experience Narrative</span>
             </div>
@@ -516,11 +559,11 @@
           <aside class="panel hero-metrics hero-entrance" aria-label="Highlights">
             <div class="metric-row">
               <div class="metric">
-                <b>4</b>
+                <b>11</b>
                 <span>核心项目 / Selected Projects</span>
               </div>
               <div class="metric">
-                <b>34</b>
+                <b>76</b>
                 <span>图片素材 / Visual Assets</span>
               </div>
             </div>
@@ -563,9 +606,37 @@
     </div>
 
     <script>
+      const categories = [
+        {
+          id: "cat-hardware",
+          zh: "智能硬件产品",
+          en: "Smart Hardware",
+          desc: "从用户痛点出发的智能产品概念、硬件系统与交互设计"
+        },
+        {
+          id: "cat-brand",
+          zh: "品牌与视觉设计",
+          en: "Brand & Visual Design",
+          desc: "品牌识别、包装文创与视觉系统设计"
+        },
+        {
+          id: "cat-illustration",
+          zh: "插画创作",
+          en: "Illustration",
+          desc: "文学主题插画与个人视觉语言探索"
+        },
+        {
+          id: "cat-cmf",
+          zh: "CMF 色彩与材质研究",
+          en: "CMF Research",
+          desc: "汽车 CMF 趋势研究、竞品分析与主题内饰方案"
+        }
+      ];
+
       const projects = [
         {
           id: "pet-heart",
+          category: "cat-hardware",
           titleZh: "宠物心跳检测仪",
           titleEn: "Pet Cardiac Diagnostics Device",
           summaryZh:
@@ -598,6 +669,7 @@
         },
         {
           id: "smart-violin",
+          category: "cat-hardware",
           titleZh: "智能小提琴",
           titleEn: "Smart Violin",
           summaryZh:
@@ -621,6 +693,7 @@
         },
         {
           id: "desktop-shrine",
+          category: "cat-hardware",
           titleZh: "桌面神龛",
           titleEn: "Desktop Shrine",
           summaryZh:
@@ -644,7 +717,48 @@
           ]
         },
         {
+          id: "touch-coffee",
+          category: "cat-brand",
+          titleZh: "Touch Coffee 咖啡品牌设计",
+          titleEn: "Touch Coffee Brand Identity",
+          summaryZh:
+            "受“指尖触感温度”启发，打造兼具亲密感与放松氛围的咖啡品牌体验。主色调采用粉雾渐变色，柔和烟粉色营造温暖质感，呈现咖啡特有的疗愈氛围。",
+          summaryEn:
+            "Inspired by the warmth of a fingertip's touch, this identity builds an intimate, relaxed coffee experience. A misty-pink gradient palette carries warmth and healing moods across posters, packaging, cups, and stationery.",
+          highlights: [
+            "品牌概念: “Touch to feel the warmth” 指尖温度",
+            "视觉语言: 手部插画 × 烟雾曲线 × 咖啡豆元素",
+            "色彩体系: 粉雾渐变主色调，疗愈氛围营造",
+            "应用范围: 海报、名片、包装袋、外带杯成套设计"
+          ],
+          cover: "./TouchCoffee咖啡品牌设计/Touch Coffee (1).jpg",
+          images: [
+            "./TouchCoffee咖啡品牌设计/Touch Coffee (1).jpg",
+            "./TouchCoffee咖啡品牌设计/Touch Coffee (2).jpg",
+            "./TouchCoffee咖啡品牌设计/Touch Coffee (3).jpg"
+          ]
+        },
+        {
+          id: "hubi-town",
+          category: "cat-brand",
+          titleZh: "湖笔小镇海报与品牌设计",
+          titleEn: "Hubi Town Poster & Brand Design",
+          summaryZh:
+            "以湖州湖笔非遗文化为核心的品牌衍生设计，以“文明传承与未来希望”为口号，将竖排书法与红橙泼墨应用于 T 恤、帆布袋、棒球帽等文旅周边。",
+          summaryEn:
+            "A cultural merchandise system for Hubi Town, China's historic brush-making town. Vertical calligraphy and ink-splash graphics translate brush heritage into T-shirts, tote bags, and caps.",
+          highlights: [
+            "文化内核: 湖笔非遗与书法美学传承",
+            "主视觉: 竖排书法标语 + 红橙泼墨飞白",
+            "应用载体: T 恤、帆布袋、棒球帽文创周边",
+            "设计定位: 文旅品牌衍生品系统"
+          ],
+          cover: "./湖笔小镇品牌设计/湖笔小镇品牌设计 (1).jpg",
+          images: ["./湖笔小镇品牌设计/湖笔小镇品牌设计 (1).jpg"]
+        },
+        {
           id: "ceramic-liquorware",
+          category: "cat-brand",
           titleZh: "陶瓷酒器创意设计",
           titleEn: "Ceramic Liquorware Creative Design",
           summaryZh:
@@ -669,6 +783,139 @@
             "./陶瓷酒器创意设计/陶瓷酒器 (6)主图3.jpg",
             "./陶瓷酒器创意设计/陶瓷酒器 (7).jpg",
             "./陶瓷酒器创意设计/陶瓷酒器 (8).jpg"
+          ]
+        },
+        {
+          id: "kundera-illustration",
+          category: "cat-illustration",
+          titleZh: "昆德拉系列插画",
+          titleEn: "Kundera Series Illustration",
+          summaryZh:
+            "以米兰·昆德拉文学为主题的个人插画系列，围绕“Kitsch 媚俗”“ES MUSS SEIN 必须如此”等核心概念，用蜡笔涂鸦语言转译《不能承受的生命之轻》《庆祝无意义》等作品的意象。",
+          summaryEn:
+            "A personal illustration series translating Milan Kundera's literary motifs through crayon-style drawing, exploring the ideas of Kitsch and Es muss sein across his major works.",
+          highlights: [
+            "主题脉络: 昆德拉文学意象的视觉转译",
+            "概念表达: “Kitsch 媚俗”与“ES MUSS SEIN”",
+            "媒介语言: 蜡笔 / 油画棒手绘涂鸦质感",
+            "色彩特征: 红蓝黄高饱和三原色体系"
+          ],
+          cover: "./昆德拉系列插画/昆德拉系列插画 (1).jpg",
+          images: [
+            "./昆德拉系列插画/昆德拉系列插画 (1).jpg",
+            "./昆德拉系列插画/昆德拉系列插画 (2).jpg",
+            "./昆德拉系列插画/昆德拉系列插画 (3).jpg",
+            "./昆德拉系列插画/昆德拉系列插画 (4).jpg",
+            "./昆德拉系列插画/昆德拉系列插画 (5).jpg",
+            "./昆德拉系列插画/昆德拉系列插画 (6).jpg",
+            "./昆德拉系列插画/昆德拉系列插画 (7).jpg"
+          ]
+        },
+        {
+          id: "nio-cmf-analysis",
+          category: "cat-cmf",
+          titleZh: "蔚来 Color & Trim CMF 分析",
+          titleEn: "NIO Color & Trim CMF Analysis",
+          summaryZh:
+            "2026.03-05 个人研究项目。围绕蔚来“纯粹、温度、未来”的品牌风格基因，系统分析 ES8 / ES6 / ET 系列外饰“高级灰”与内饰“莫兰迪”色彩策略，结合竞品对标、用户画像与 WGSN 趋势，输出完整 CMF 研究框架。",
+          summaryEn:
+            "An individual research project decoding NIO's design DNA: mineral-grey exteriors and Morandi-toned interiors across ES8/ES6/ET lines, built on benchmarking, user personas, and WGSN trend analysis into a complete CMF framework.",
+          highlights: [
+            "品牌研究: 蔚来“纯粹 / 温度 / 未来”风格解码",
+            "外饰 CMF: “高级灰”基调 + 莫兰迪彩色系梳理",
+            "内饰 CMF: 低饱和克制的莫兰迪配色策略",
+            "研究方法: 竞品对标 + 用户画像 + WGSN 年度色趋势"
+          ],
+          cover: "./蔚来CMF色彩分析/蔚来CMF色彩分析 (1).jpg",
+          images: [
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (1).jpg",
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (2).jpg",
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (3).jpg",
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (4).jpg",
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (5).jpg",
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (6).jpg",
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (7).jpg",
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (8).jpg",
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (9).jpg",
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (10).jpg",
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (11).jpg",
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (12).jpg",
+            "./蔚来CMF色彩分析/蔚来CMF色彩分析 (13).jpg"
+          ]
+        },
+        {
+          id: "cmf-crafted-saddle",
+          category: "cat-cmf",
+          titleZh: "鎏金匠心 CMF 主题方案",
+          titleEn: "Crafted Saddle Luxury",
+          summaryZh:
+            "以“温暖厚实、有手工痕迹”为调型的内饰 CMF 方案：焦糖金穿孔 Nappa 为主角，深咖麂皮、烟熏软木与深胡桃木托底，配合香槟金金属漆外饰，呈现越靠近越见工艺的豪华质感。",
+          summaryEn:
+            "A warm, saddle-leather-inspired interior CMF scheme: perforated caramel-gold Nappa leads, grounded by cocoa suede, smoked cork, and dark walnut, matched with champagne-gold metallic exterior paint.",
+          highlights: [
+            "调型定位: 温暖厚实的手工马鞍皮意象",
+            "主材组合: 焦糖金穿孔 Nappa + 深咖麂皮",
+            "辅助材质: 烟熏软木、深胡桃木、象牙白缝线",
+            "外饰搭配: 香槟金金属漆呼应内饰调性"
+          ],
+          cover: "./鎏金匠心CMF主题/鎏金匠心CMF主题 (1).jpg",
+          images: [
+            "./鎏金匠心CMF主题/鎏金匠心CMF主题 (1).jpg",
+            "./鎏金匠心CMF主题/鎏金匠心CMF主题 (2).jpg",
+            "./鎏金匠心CMF主题/鎏金匠心CMF主题 (3).jpg",
+            "./鎏金匠心CMF主题/鎏金匠心CMF主题 (4).jpg",
+            "./鎏金匠心CMF主题/鎏金匠心CMF主题 (5).jpg",
+            "./鎏金匠心CMF主题/鎏金匠心CMF主题 (6).jpg"
+          ]
+        },
+        {
+          id: "cmf-nordic-mist",
+          category: "cat-cmf",
+          titleZh: "北欧迷雾 CMF 主题方案",
+          titleEn: "Nordic Mist",
+          summaryZh:
+            "以北欧静谧为基调的 CMF 方案：压缩羊毛毡、漂白白蜡木、冷灰石材与半透明磨砂树脂构建清冷材质谱系，浅雾灰混色羊毛与微穿孔生物基皮革传递可持续与疗愈感。",
+          summaryEn:
+            "A Nordic-toned CMF scheme built on compressed wool felt, bleached ash veneer, cool grey stone, and matte translucent resin, conveying sustainability and calm through mist-grey textiles and bio-based leather.",
+          highlights: [
+            "调型定位: 北欧静谧与自然疗愈氛围",
+            "材质谱系: 羊毛毡 + 白蜡木 + 冷灰石材",
+            "创新材料: 半透明磨砂树脂、微穿孔生物基皮革",
+            "可持续: 原液染色织带与再生材质运用"
+          ],
+          cover: "./北欧迷雾CMF主题/北欧迷雾CMF主题 (1).jpg",
+          images: [
+            "./北欧迷雾CMF主题/北欧迷雾CMF主题 (1).jpg",
+            "./北欧迷雾CMF主题/北欧迷雾CMF主题 (2).jpg",
+            "./北欧迷雾CMF主题/北欧迷雾CMF主题 (3).jpg",
+            "./北欧迷雾CMF主题/北欧迷雾CMF主题 (4).jpg",
+            "./北欧迷雾CMF主题/北欧迷雾CMF主题 (5).jpg",
+            "./北欧迷雾CMF主题/北欧迷雾CMF主题 (6).jpg",
+            "./北欧迷雾CMF主题/北欧迷雾CMF主题 (7).jpg"
+          ]
+        },
+        {
+          id: "cmf-crimson-aria",
+          category: "cat-cmf",
+          titleZh: "咏叹调 CMF 主题方案",
+          titleEn: "Crimson Aria",
+          summaryZh:
+            "最具戏剧性与情绪张力的 CMF 方案：石榴红双面缎面针织为情感中心，香槟米白双层经编、奶黄缟玛瑙与香槟金 PVD 金属拉开层次，白色蕾丝绣花如最后一句咏叹调，将浪漫与仪式感推向台前。",
+          summaryEn:
+            "The most theatrical scheme of the series: garnet-red double-face satin knit as the emotional core, layered with champagne-beige warp knit, cream-amber onyx, and champagne-gold PVD metal, crowned by white lace embroidery.",
+          highlights: [
+            "调型定位: 戏剧性与情绪化表达",
+            "情感中心: 石榴红双面缎面针织",
+            "光感层次: 奶黄缟玛瑙 + 香槟金 PVD 金属",
+            "仪式细节: 白色蕾丝绣于石榴红针织"
+          ],
+          cover: "./咏叹调CMF主题/咏叹调CMF主题 (1).jpg",
+          images: [
+            "./咏叹调CMF主题/咏叹调CMF主题 (1).jpg",
+            "./咏叹调CMF主题/咏叹调CMF主题 (2).jpg",
+            "./咏叹调CMF主题/咏叹调CMF主题 (3).jpg",
+            "./咏叹调CMF主题/咏叹调CMF主题 (4).jpg",
+            "./咏叹调CMF主题/咏叹调CMF主题 (5).jpg"
           ]
         }
       ];
@@ -696,7 +943,22 @@
       }
 
       function renderProjects(data) {
+        let currentCategory = null;
         data.forEach((project) => {
+          if (project.category !== currentCategory) {
+            currentCategory = project.category;
+            const category = categories.find((item) => item.id === currentCategory);
+            if (category) {
+              const header = document.createElement("div");
+              header.className = "category-title reveal";
+              header.id = category.id;
+              header.innerHTML = `
+                <h3>${category.zh}<small>${category.en}</small></h3>
+                <p>${category.desc}</p>
+              `;
+              projectRoot.appendChild(header);
+            }
+          }
           const card = document.createElement("article");
           card.className = "project-card reveal";
           card.id = project.id;
@@ -786,7 +1048,7 @@
         const idToLink = new Map(
           links.map((link) => [link.getAttribute("href").slice(1), link])
         );
-        const sections = [...document.querySelectorAll("main section[id], article[id]")];
+        const sections = [...document.querySelectorAll("main section[id], .category-title[id]")];
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
