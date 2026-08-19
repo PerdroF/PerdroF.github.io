@@ -1,404 +1,410 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>项目经历展示 | Portfolio</title>
-    <meta name="description" content="项目经历展示：智能硬件、品牌视觉、插画创作与 CMF 色彩研究共 8 个设计项目。" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
-    <style>
-      :root{--bg:#f4f6f2;--bg-soft:#eef2eb;--card:#fff;--text:#172023;--text-soft:#4d5b5f;--line:#d3ddd4;--accent:#0c7b73;--accent-2:#e39a1a;--shadow:0 16px 44px rgba(16,40,40,.1)}
-      *{box-sizing:border-box}
-      html,body{margin:0;padding:0;background:radial-gradient(circle at 86% 6%,#d7eee5 0%,transparent 30%),radial-gradient(circle at 10% 94%,#f7e7c6 0%,transparent 28%),var(--bg);color:var(--text);font-family:"Manrope","Noto Sans SC",sans-serif}
-      a{color:inherit}
-      .wrapper{width:min(1160px,calc(100% - 2rem));margin:0 auto}
-      .topbar{position:sticky;top:0;z-index:20;backdrop-filter:blur(8px);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 92%,transparent)}
-      .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 0}
-      .logo{font-weight:800}
-      .nav{display:flex;flex-wrap:wrap;gap:.5rem}
-      .nav a{font-size:.85rem;text-decoration:none;border:1px solid transparent;border-radius:999px;color:var(--text-soft);padding:.38rem .72rem}
-      .nav a.active,.nav a:hover{background:#fff;color:var(--text);border-color:var(--line)}
-      .hero{padding:clamp(2.2rem,6vw,5rem) 0 1.7rem}
-      .hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:1rem}
-      .panel{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:clamp(1.2rem,3vw,2rem)}
-      .eyebrow{margin:0;color:var(--accent);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
-      h1{margin:.45rem 0 .35rem;font-size:clamp(1.6rem,4.6vw,3rem);line-height:1.1}
-      .author{margin:0 0 .8rem;color:var(--text-soft);font-size:.9rem}
-      .author-contact{margin:-.45rem 0 .95rem;color:var(--text-soft);font-size:.86rem}
-      .hero p{margin:0;color:var(--text-soft);line-height:1.72;font-size:clamp(.94rem,2.1vw,1.04rem)}
-      .tags{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.45rem}
-      .tag{font-size:.8rem;color:var(--text-soft);border:1px solid var(--line);background:#f8faf8;border-radius:999px;padding:.34rem .68rem}
-      .hero-metrics{display:grid;gap:.7rem}
-      .metric-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
-      .metric{min-height:108px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(165deg,#fff 0%,var(--bg-soft) 100%);padding:.85rem .9rem;display:flex;flex-direction:column;justify-content:center}
-      .metric b{font-size:1.45rem;line-height:1}
-      .metric span{margin-top:.4rem;color:var(--text-soft);font-size:.82rem;line-height:1.4}
-      .section-title{margin:clamp(1.3rem,3vw,2.4rem) 0 .95rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-      .section-title h2{margin:0;font-size:clamp(1.16rem,3vw,1.8rem)}
-      .section-title p{margin:0;color:var(--text-soft)}
-      .projects{display:grid;gap:1rem}
-      .project-card{scroll-margin-top:72px;background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
-      .project-inner{display:grid;grid-template-columns:1fr 1fr}
-      .project-content{padding:clamp(1rem,2.3vw,1.6rem)}
-      .project-title{margin:0;font-size:clamp(1.06rem,2.4vw,1.48rem)}
-      .project-title small{display:block;margin-top:.25rem;color:var(--text-soft);font-size:.84rem}
-      .project-summary{margin:.7rem 0 0;color:var(--text-soft);line-height:1.72}
-      .highlights{margin:.75rem 0 0;padding-left:1rem;line-height:1.55}
-      .highlights li+li{margin-top:.35rem}
-      .award-note{margin-top:.75rem;border:1px dashed var(--accent-2);border-radius:14px;background:#fffaf1;color:#584419;padding:.68rem .78rem;line-height:1.6;font-size:.9rem}
-      .project-media{border-left:1px solid var(--line);background:#f8faf7;padding:.85rem}
-      .media-list{display:grid;gap:.55rem}
-      .gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.48rem}
-      .media-item{margin:0}
-      .media-item img{width:100%;height:auto;object-fit:contain;display:block;border-radius:10px;border:0;background:transparent;cursor:zoom-in}
-      .cover-figure img{width:100%}
-      .gallery-grid .media-item{display:flex;align-items:center;justify-content:center;min-height:170px}
-      .gallery-grid .media-item img{width:auto;max-width:100%;max-height:170px}
-      .sub-header{margin:.8rem 0 .4rem;padding:.6rem .85rem;background:linear-gradient(135deg,var(--bg-soft),#fff);border-left:3px solid var(--accent);border-radius:10px}
-      .sub-header h4{margin:0;font-size:.92rem;font-weight:700}
-      .sub-header small{display:block;margin-top:.15rem;color:var(--text-soft);font-size:.78rem}
-      .sub-header p{margin:.3rem 0 0;color:var(--text-soft);font-size:.8rem;line-height:1.5}
-      .sub-header.theme{border-left-color:var(--accent-2);background:linear-gradient(135deg,#fffaf1,#fff)}
-      .img-err{width:100%;min-height:100px;display:flex;align-items:center;justify-content:center;background:var(--bg-soft);border:1px dashed var(--line);border-radius:10px;color:var(--text-soft);font-size:.8rem}
-      .footer{margin:1.7rem 0 3rem;background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
-      .footer-inner{padding:clamp(1rem,2.4vw,1.6rem)}
-      .footer h3{margin:0 0 .45rem}
-      .footer p{margin:0;color:var(--text-soft);line-height:1.68}
-      .lightbox{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(10,16,17,.82)}
-      .lightbox.show{display:flex}
-      .lightbox-content{position:relative;max-width:min(96vw,1800px);max-height:92vh}
-      .lightbox img{max-width:100%;max-height:92vh;width:auto;height:auto;object-fit:contain;display:block;border-radius:12px;box-shadow:0 16px 50px rgba(0,0,0,.45)}
-      .lightbox-close{position:absolute;top:-.75rem;right:-.75rem;width:2.2rem;height:2.2rem;border:0;border-radius:999px;background:#fff;color:#111;font-size:1.3rem;cursor:pointer}
-      .reveal{opacity:0;transform:translateY(20px);transition:opacity 620ms ease,transform 620ms ease}
-      .reveal.show{opacity:1;transform:translateY(0)}
-      .reveal-fallback .reveal{opacity:1!important;transform:none!important}
-      .hero-entrance{animation:heroRise .7s ease both}
-      .hero-entrance:nth-child(2){animation-delay:120ms}
-      @keyframes heroRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-      :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-      @media(max-width:980px){.hero-grid,.project-inner,.footer-inner{grid-template-columns:1fr}.project-media{border-left:0;border-top:1px solid var(--line)}}
-      @media(max-width:640px){.wrapper{width:min(1160px,calc(100% - 1rem))}.metric{min-height:94px}.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery-grid .media-item img{max-height:145px}.gallery-grid .media-item{min-height:145px}}
-      @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:1ms!important;animation-duration:1ms!important;animation-iteration-count:1!important}.reveal{opacity:1;transform:none}}
-    </style>
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="wrapper topbar-inner">
-        <div class="logo">Project Portfolio</div>
-        <nav class="nav" aria-label="Section Navigation">
-          <a href="#hero">Home</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio | 项目作品集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#FAFAF7;--bg-2:#F2F0EB;--text:#111;--text-soft:#666;--text-muted:#999;
+  --line:#E5E3DD;--accent:#C8502A;--radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:"Manrope","Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
 
-    <main class="wrapper">
-      <section id="hero" class="hero">
-        <div class="hero-grid">
-          <article class="panel hero-entrance">
-            <p class="eyebrow">Project Showcase</p>
-            <h1>项目经历展示</h1>
-            <p class="author">作者：方舟子</p>
-            <p class="author-contact">联系方式：2357772944@qq.com</p>
-            <p>聚焦智能硬件、品牌视觉、插画创作与 CMF 研究，我将用户痛点与文化洞察转化为可落地的设计方案，并通过场景化表达连接从概念到传播的完整链路。</p>
-            <div class="tags">
-              <span class="tag">Product Strategy</span>
-              <span class="tag">Industrial Design</span>
-              <span class="tag">Brand Identity</span>
-              <span class="tag">Illustration</span>
-              <span class="tag">CMF Research</span>
-              <span class="tag">Experience Narrative</span>
-            </div>
-          </article>
-          <aside class="panel hero-metrics hero-entrance" aria-label="Highlights">
-            <div class="metric-row">
-              <div class="metric"><b>8</b><span>核心项目 / Selected Projects</span></div>
-              <div class="metric"><b>75</b><span>图片素材 / Visual Assets</span></div>
-            </div>
-            <div class="metric-row">
-              <div class="metric"><b>CES</b><span>MVP 海外传播 / Overseas Exposure</span></div>
-              <div class="metric"><b>Award</b><span>陶瓷酒器国家级赛事优秀奖</span></div>
-            </div>
-          </aside>
-        </div>
-      </section>
+/* === Entrance overlay === */
+.entrance{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .8s ease .4s,visibility .8s ease .4s}
+.entrance.done{opacity:0;visibility:hidden}
+.entrance-text{font-size:clamp(1.5rem,4vw,3rem);font-weight:300;letter-spacing:-.02em;color:var(--text);animation:entPulse 1.5s ease}
+@keyframes entPulse{0%{opacity:0;transform:scale(.96)}50%{opacity:1}100%{opacity:0;transform:scale(1.02)}}
 
-      <section class="section-title reveal">
-        <h2>Projects / 项目展示</h2>
-        <p>图片可点击展开全图查看</p>
-      </section>
+/* === Header === */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;transition:all .3s ease;opacity:0;animation:fadeDown .8s ease .8s forwards}
+.header.scrolled{background:rgba(250,250,247,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:14px 32px}
+.logo{font-size:18px;font-weight:700;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:24px}
+.nav-links a{font-size:14px;color:var(--text-soft);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
 
-      <section id="projects" class="projects" aria-label="Projects"></section>
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-      <section id="contact" class="footer reveal">
-        <div class="footer-inner">
-          <h3>Summary / 职业摘要</h3>
-          <p>擅长从市场洞察中提炼产品机会点，并将工业设计、视觉叙事与实现可行性结合，形成可展示、可沟通、可迭代的设计成果。</p>
-        </div>
-      </section>
-    </main>
+/* === Hero === */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 32px 80px;max-width:1400px;margin:0 auto}
+.hero-eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;opacity:0;animation:fadeUp .7s ease .9s forwards}
+.hero h1{font-size:clamp(2.5rem,8vw,6.5rem);font-weight:700;line-height:.98;letter-spacing:-.04em;margin-bottom:32px;opacity:0;animation:fadeUp .7s ease 1s forwards}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-soft);max-width:560px;line-height:1.7;opacity:0;animation:fadeUp .7s ease 1.1s forwards}
+.hero-meta{display:flex;gap:32px;margin-top:48px;opacity:0;animation:fadeUp .7s ease 1.2s forwards}
+.hero-meta div b{font-size:2rem;font-weight:700;display:block;line-height:1}
+.hero-meta div span{font-size:13px;color:var(--text-muted);margin-top:4px;display:block}
 
-    <div class="lightbox" id="lightbox" aria-hidden="true">
-      <div class="lightbox-content">
-        <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
-        <img id="lightboxImage" src="" alt="Preview" />
-      </div>
-    </div>
+/* === Section === */
+.section{padding:60px 32px;max-width:1400px;margin:0 auto}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px}
+.section-head h2{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em}
+.section-head p{font-size:14px;color:var(--text-muted)}
 
-    <script>
-      /* ================================================================
-         8 projects in specified order:
-         1.蔚来ES8 2.Porcelain 3.智能小提琴 4.宠物心脏检测仪
-         5.昆德拉 6.咖啡品牌 7.善琏汉字艺术 8.桌面神龛
-         All image paths use ASCII names to fix GitHub Pages 404 issue.
-         ================================================================ */
-      const projects = [
-        /* 1. 蔚来 ES8 CMF 设计研究 */
-        {
-          id:"nio-es8",
-          titleZh:"蔚来 ES8 CMF 设计研究",
-          titleEn:"NIO ES8 CMF Design Research",
-          summaryZh:"围绕蔚来「纯粹、温度、未来」的品牌风格基因，系统分析 ES8 外饰「高级灰」与内饰莫兰迪色彩策略，结合竞品对标、用户画像与 WGSN 趋势，输出完整 CMF 研究框架，并延伸至三套主题内饰方案。",
-          summaryEn:"A comprehensive CMF research project decoding NIO's design DNA for the ES8, covering brand research, CMF strategy benchmarking, macro trend analysis, and color trend studies, extending into three themed interior schemes.",
-          highlights:[
-            "品牌研究: 蔚来「纯粹 / 温度 / 未来」风格解码",
-            "研究方法: 竞品对标 + 用户画像 + WGSN 年度色趋势",
-            "输出成果: 4 大调研模块 + 3 套 CMF 主题内饰方案",
-            "能力覆盖: 品牌调研 → CMF Benchmark → 趋势研究 → 方案落地"
-          ],
-          sections:[
-            {titleZh:"品牌调研",titleEn:"Brand Research",desc:"蔚来「纯粹 / 温度 / 未来」品牌风格基因解码",dir:"09_nio_cmf",imgs:["img01.jpg","img02.jpg","img03.jpg"]},
-            {titleZh:"CMF 策略调研 Benchmark",titleEn:"CMF Strategy Benchmark",desc:"竞品对标分析 + 用户画像研究",dir:"09_nio_cmf",imgs:["img04.jpg","img05.jpg","img06.jpg"]},
-            {titleZh:"宏观趋势调研",titleEn:"Macro Trend Research",desc:"WGSN 年度色趋势 + 行业趋势分析",dir:"09_nio_cmf",imgs:["img07.jpg","img08.jpg","img09.jpg"]},
-            {titleZh:"色彩趋势调研",titleEn:"Color Trend Research",desc:"外饰「高级灰」+ 内饰莫兰迪配色策略",dir:"09_nio_cmf",imgs:["img10.jpg","img11.jpg","img12.jpg","img13.jpg"]},
-            {titleZh:"鎏金匠心 CMF 主题方案",titleEn:"Crafted Saddle Luxury",desc:"温暖厚实、有手工痕迹：焦糖金穿孔 Nappa + 深咖麂皮 + 烟熏软木 + 深胡桃木，香槟金金属漆外饰。",dir:"10_cmf_saddle",isTheme:true,imgs:["img01.jpg","img02.jpg","img03.jpg","img04.jpg","img05.jpg","img06.jpg"]},
-            {titleZh:"北欧迷雾 CMF 主题方案",titleEn:"Nordic Mist",desc:"北欧静谧为基调：压缩羊毛毡 + 漂白白蜡木 + 冷灰石材 + 半透明磨砂树脂，传递可持续与疗愈感。",dir:"11_cmf_nordic",isTheme:true,imgs:["img01.jpg","img02.jpg","img03.jpg","img04.jpg","img05.jpg","img06.jpg","img07.jpg"]},
-            {titleZh:"咏叹调 CMF 主题方案",titleEn:"Crimson Aria",desc:"最具戏剧性与情绪张力：石榴红双面缎面针织为情感中心，香槟金 PVD 金属 + 白色蕾丝绣花。",dir:"12_cmf_aria",isTheme:true,imgs:["img01.jpg","img02.jpg","img03.jpg","img04.jpg","img05.jpg"]}
-          ]
-        },
+/* === Project Grid (Xiaohongshu-style) === */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{cursor:pointer;overflow:hidden;border-radius:var(--radius);background:var(--bg-2);position:relative;opacity:0;transform:translateY(40px);transition:opacity .6s ease,transform .6s ease}
+.card.show{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-4px)}
+.card.show:hover{transform:translateY(-4px)}
+.card-img{aspect-ratio:4/3;overflow:hidden;background:var(--bg-2)}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
+.card:hover .card-img img{transform:scale(1.04)}
+.card-body{padding:16px 18px}
+.card-title{font-size:16px;font-weight:600;margin-bottom:4px;line-height:1.3}
+.card-sub{font-size:13px;color:var(--text-muted)}
+.card-num{position:absolute;top:12px;left:12px;font-size:11px;font-weight:600;color:#fff;background:rgba(0,0,0,.5);padding:4px 8px;border-radius:6px;backdrop-filter:blur(4px)}
 
-        /* 2. Porcelain 陶瓷酒瓶设计 */
-        {
-          id:"porcelain",
-          titleZh:"Serene Porcelain 陶瓷酒瓶设计",
-          titleEn:"Serene Porcelain Bottle Design",
-          summaryZh:"Serene Porcelain 品牌手册与酒瓶设计项目，围绕「醉翁之意」主题开展陶瓷酒瓶、分酒器、酒杯成套化造型与表面设计，深入研究釉色、肌理与烧成工艺，参赛作品获中国酒器产业协会优秀奖。",
-          summaryEn:"An independent brand and product design project recognized by the China Liquorware Industry Association. It covers brand manual, bottle, sharing-pitcher, and cup design with deep study in glaze color, texture, and firing craftsmanship.",
-          highlights:[
-            "奖项成果: 国家级陶瓷酒器设计赛事优秀奖",
-            "造型范围: 品牌手册 + 酒瓶、分酒器、酒杯成套化",
-            "表面语言: 釉面、纹样、陶瓷肌理表达",
-            "能力迁移: 材质研究可延展至汽车内饰 CMF"
-          ],
-          awardNote:"中国酒器产业协会·优秀奖 | 材质研究经验可迁移至汽车内饰高端 CMF 开发。",
-          cover:"./04_porcelain/img01.jpg",
-          images:["./04_porcelain/img01.jpg","./04_porcelain/img02.jpg","./04_porcelain/img03.jpg","./04_porcelain/img04.jpg","./04_porcelain/img05.jpg","./04_porcelain/img06.jpg","./04_porcelain/img07.jpg","./04_porcelain/img08.jpg","./04_porcelain/img09.jpg","./04_porcelain/img10.jpg","./04_porcelain/img11.jpg","./04_porcelain/img12.jpg"]
-        },
+/* === Detail Overlay === */
+.overlay{position:fixed;inset:0;z-index:200;background:var(--bg);overflow-y:auto;visibility:hidden;opacity:0;transition:opacity .4s ease,visibility .4s ease}
+.overlay.open{visibility:visible;opacity:1}
+.overlay-close{position:fixed;top:20px;right:24px;z-index:210;width:44px;height:44px;border:none;border-radius:50%;background:var(--bg);border:1px solid var(--line);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.overlay-close:hover{background:var(--text);color:var(--bg)}
+.overlay-content{max-width:900px;margin:0 auto;padding:100px 32px 80px}
 
-        /* 3. Lumivox 智能小提琴 */
-        {
-          id:"smart-violin",
-          titleZh:"Lumivox 智能小提琴",
-          titleEn:"Lumivox Smart Violin",
-          summaryZh:"Lumivox 光音——面向小提琴初学者的智能学习系统。从用户调研、痛点拆解到低保真原型与高保真 UI 输出，完整呈现从 63% 放弃率洞察到 LED 智能指板、动作传感器、实时音准可视化与社区激励的产品设计链路。",
-          summaryEn:"Lumivox is a smart violin learning system addressing the 63% dropout rate among beginners. The full design process spans user research, problem breakdown, lo-fi wireframes, storyboards, and a polished dark-mode UI with real-time pitch analysis and gamified practice.",
-          highlights:[
-            "用户调研: 512 份问卷 + 3 类用户画像 + 体验趋势分析",
-            "痛点拆解: 无品格定位、弓控挑战、缺乏反馈、情感挫败",
-            "功能架构: 智能LED指板 + 动作传感器 + 音准可视化 + 社区",
-            "设计产出: 低保真原型 + 故事板 + 9 屏高保真 UI + 设计规范"
-          ],
-          cover:"./01_violin/img01.jpg",
-          images:["./01_violin/img01.jpg","./01_violin/img02.jpg","./01_violin/img03.jpg","./01_violin/img04.jpg","./01_violin/img05.jpg","./01_violin/img06.jpg","./01_violin/img07.jpg","./01_violin/img08.jpg","./01_violin/img09.jpg","./01_violin/img10.jpg"]
-        },
+/* Detail hero */
+.detail-hero{margin-bottom:40px}
+.detail-cover{width:100%;border-radius:var(--radius);overflow:hidden;margin-bottom:32px}
+.detail-cover img{width:100%}
+.detail-title{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:8px}
+.detail-en{font-size:1rem;color:var(--text-muted);margin-bottom:20px}
+.detail-desc{font-size:1rem;color:var(--text-soft);line-height:1.8;margin-bottom:16px}
+.detail-highlights{list-style:none;padding:0;margin:24px 0}
+.detail-highlights li{padding:10px 0;border-bottom:1px solid var(--line);font-size:.9rem;color:var(--text-soft)}
+.detail-highlights li:last-child{border-bottom:none}
 
-        /* 4. 宠物心脏检测仪 */
-        {
-          id:"pet-cardiac",
-          titleZh:"宠物心脏检测仪",
-          titleEn:"Pet Cardiac Diagnostics Device",
-          summaryZh:"调研宠物医疗市场现状，以心跳异常难察觉、检测流程繁琐、费用昂贵为突破口，设计小型化与便携化产品。MVP 在 CES 获得海外广泛宣传。",
-          summaryEn:"Based on pet-care market research, this concept targets three pain points: low awareness of cardiac issues, complicated examinations, and high costs. The solution is a compact, portable device, with MVP exposure at CES.",
-          highlights:[
-            "问题切入: 难觉察 + 流程繁琐 + 费用高",
-            "方案特征: 非接触监测、居家可用、数据可读",
-            "系统闭环: 硬件 + App + ECG/AI 可视化",
-            "传播成果: MVP 在 CES 获海外关注"
-          ],
-          cover:"./03_pet_cardiac/img01.jpg",
-          images:["./03_pet_cardiac/img01.jpg","./03_pet_cardiac/img02.jpg","./03_pet_cardiac/img03.jpg","./03_pet_cardiac/img04.jpg","./03_pet_cardiac/img05.jpg"]
-        },
+/* Detail sections */
+.detail-section{margin:48px 0}
+.detail-section h3{font-size:1.25rem;font-weight:600;margin-bottom:8px;padding-left:14px;border-left:3px solid var(--accent)}
+.detail-section .section-en{font-size:.8rem;color:var(--text-muted);margin-bottom:6px;padding-left:14px}
+.detail-section p.section-desc{font-size:.85rem;color:var(--text-soft);margin-bottom:16px;padding-left:14px;line-height:1.6}
+.detail-section.theme h3{border-left-color:#D4A574}
+.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.detail-grid .img-wrap{border-radius:10px;overflow:hidden;background:var(--bg-2)}
+.detail-grid .img-wrap img{width:100%;cursor:zoom-in}
+.detail-grid.full .img-wrap{grid-column:span 2}
 
-        /* 5. 昆德拉系列插画 */
-        {
-          id:"kundera",
-          titleZh:"昆德拉系列插画作品",
-          titleEn:"Kundera Series Illustration",
-          summaryZh:"以米兰·昆德拉文学为主题的个人插画系列，围绕「Kitsch 媚俗」「ES MUSS SEIN 必须如此」等核心概念，用蜡笔涂鸦语言转译《不能承受的生命之轻》《庆祝无意义》等作品的意象。",
-          summaryEn:"A personal illustration series translating Milan Kundera's literary motifs through crayon-style drawing, exploring the ideas of Kitsch and Es muss sein across his major works.",
-          highlights:[
-            "主题脉络: 昆德拉文学意象的视觉转译",
-            "概念表达: 「Kitsch 媚俗」与「ES MUSS SEIN」",
-            "媒介语言: 蜡笔 / 油画棒手绘涂鸦质感",
-            "色彩特征: 红蓝黄高饱和三原色体系"
-          ],
-          cover:"./08_kundera/img01.jpg",
-          images:["./08_kundera/img01.jpg","./08_kundera/img02.jpg","./08_kundera/img03.jpg","./08_kundera/img04.jpg","./08_kundera/img05.jpg"]
-        },
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:2rem;background:rgba(10,10,10,.88)}
+.lightbox.show{display:flex}
+.lightbox img{max-width:95vw;max-height:92vh;border-radius:8px}
+.lightbox .lb-close{position:absolute;top:16px;right:20px;width:40px;height:40px;border:none;border-radius:50%;background:#fff;font-size:18px;cursor:pointer}
 
-        /* 6. Touch Coffee 咖啡品牌设计 */
-        {
-          id:"touch-coffee",
-          titleZh:"Touch Coffee 咖啡品牌设计",
-          titleEn:"Touch Coffee Brand Identity",
-          summaryZh:"受「指尖触感温度」启发，打造兼具亲密感与放松氛围的咖啡品牌体验。主色调采用粉雾渐变色，柔和烟粉色营造温暖质感，呈现咖啡特有的疗愈氛围。",
-          summaryEn:"Inspired by the warmth of a fingertip's touch, this identity builds an intimate, relaxed coffee experience. A misty-pink gradient palette carries warmth and healing moods across posters, packaging, cups, and stationery.",
-          highlights:[
-            "品牌概念: 「Touch to feel the warmth」指尖温度",
-            "视觉语言: 手部插画 × 烟雾曲线 × 咖啡豆元素",
-            "色彩体系: 粉雾渐变主色调，疗愈氛围营造",
-            "应用范围: 海报、名片、包装袋、外带杯成套设计"
-          ],
-          cover:"./05_coffee/img01.jpg",
-          images:["./05_coffee/img01.jpg","./05_coffee/img02.jpg","./05_coffee/img03.jpg"]
-        },
+/* Footer */
+.footer{padding:60px 32px 40px;max-width:1400px;margin:0 auto;text-align:center}
+.footer p{font-size:14px;color:var(--text-muted)}
 
-        /* 7. 善琏汉字艺术 (merged: 善琏汉字艺术研究院 + 湖笔小镇) */
-        {
-          id:"shanlian-art",
-          titleZh:"善琏汉字艺术",
-          titleEn:"Shanlian Character Art",
-          summaryZh:"以湖州善琏湖笔非遗文化为核心的文化艺术项目，涵盖 2024 年港澳青少年汉字艺术与非遗多元体验活动系列文化海报、品牌衍生设计，以及矿泉水包装、T 恤、帆布袋、棒球帽等文旅周边，将竖排书法与红橙泼墨应用于现代产品设计。",
-          summaryEn:"A cultural art project centered on the Hubi brush heritage of Shanlian, Huzhou. It includes poster series for the 2024 Hong Kong-Macau Youth Chinese Character Art & Heritage Experience, brand merchandise design, water bottle labels, T-shirts, tote bags, and caps.",
-          highlights:[
-            "活动主题: 港澳青少年汉字艺术与非遗多元体验",
-            "核心标语: 「文明·传承与未来希望」",
-            "视觉手法: 水墨大写意 + 解构式汉字排版",
-            "文创周边: 矿泉水包装、T 恤、帆布袋、棒球帽成套设计"
-          ],
-          cover:"./06_shanlian/img01.jpg",
-          images:["./06_shanlian/img01.jpg","./07_hubi_town/img01.jpg","./07_hubi_town/img02.jpg"]
-        },
+/* Responsive */
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hero{padding:100px 20px 60px}
+  .section{padding:40px 20px}
+  .overlay-content{padding:80px 20px 60px}
+  .detail-grid{grid-template-columns:1fr}
+  .header{padding:16px 20px}
+}
+@media(max-width:560px){
+  .grid{grid-template-columns:1fr;gap:16px}
+  .nav-links{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:1ms!important;transition-duration:1ms!important}
+}
+</style>
+</head>
+<body>
 
-        /* 8. 桌面神龛 */
-        {
-          id:"desktop-shrine",
-          titleZh:"桌面神龛",
-          titleEn:"Desktop Shrine",
-          summaryZh:"结合 2025 热门玄学主题与年轻人佛系生活需求，提出「数据 + 信仰」产品模式，以运势、开光、占卜为核心功能方向，设计卡通化桌面小佛龛。",
-          summaryEn:"This concept blends contemporary spiritual trends with calm-lifestyle needs, proposing a data-plus-belief model centered on luck, blessing rituals, and divination in a compact desktop companion form.",
-          highlights:[
-            "趋势结合: 年轻人情绪需求与玄学语境",
-            "产品定位: 桌面陪伴型情绪疗愈装置",
-            "体验方向: 运势、占卜与仪式感交互",
-            "视觉特征: 微缩建筑感与氛围灯效"
-          ],
-          cover:"./02_shrine/img04.jpg",
-          images:["./02_shrine/img01.jpg","./02_shrine/img02.jpg","./02_shrine/img03.jpg","./02_shrine/img04.jpg","./02_shrine/img05.jpg","./02_shrine/img06.jpg"]
-        }
-      ];
+<!-- Entrance -->
+<div class="entrance" id="entrance">
+  <div class="entrance-text">Portfolio</div>
+</div>
 
-      const projectRoot=document.getElementById("projects");
-      const lightbox=document.getElementById("lightbox");
-      const lightboxImage=document.getElementById("lightboxImage");
-      const lightboxClose=document.getElementById("lightboxClose");
+<!-- Header -->
+<header class="header" id="header">
+  <div class="logo">Portfolio<span>.</span></div>
+  <nav class="nav-links">
+    <a href="#work">Works</a>
+    <a href="#about">About</a>
+    <a href="mailto:2357772944@qq.com">Contact</a>
+  </nav>
+</header>
 
-      function openLightbox(src,alt){lightboxImage.src=src;lightboxImage.alt=alt;lightbox.classList.add("show");lightbox.setAttribute("aria-hidden","false")}
-      function closeLightbox(){lightbox.classList.remove("show");lightbox.setAttribute("aria-hidden","true");lightboxImage.src=""}
-      function imgTag(src,alt){return '<img loading="lazy" decoding="async" src="'+src+'" alt="'+alt+'" data-expandable="true" referrerpolicy="no-referrer" onerror="this.onerror=null;this.parentElement.className=\'img-err\';this.parentElement.textContent=\'图片加载失败\';this.remove()" />'}
+<!-- Hero -->
+<section class="hero" id="hero">
+  <p class="hero-eyebrow">2026 · Project Showcase</p>
+  <h1>设计与<em>体验</em><br>的交叉点</h1>
+  <p class="hero-sub">聚焦智能硬件、品牌视觉、CMF 色彩研究与插画创作。将用户洞察与文化叙事转化为可落地的设计方案。</p>
+  <div class="hero-meta">
+    <div><b>8</b><span>Projects</span></div>
+    <div><b>75+</b><span>Visuals</span></div>
+    <div><b>CES</b><span>MVP Exposure</span></div>
+    <div><b>Award</b><span>National Merit</span></div>
+  </div>
+</section>
 
-      function renderProjects(data){
-        data.forEach(function(project){
-          const card=document.createElement("article");
-          card.className="project-card reveal";
-          card.id=project.id;
+<!-- Project Grid -->
+<section class="section" id="work">
+  <div class="section-head">
+    <h2>Selected Works</h2>
+    <p>点击查看详情 · Click to expand</p>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
 
-          var mediaHtml="";
+<!-- About -->
+<section class="section" id="about">
+  <div class="section-head">
+    <h2>About</h2>
+  </div>
+  <p style="font-size:1.1rem;color:var(--text-soft);line-height:1.8;max-width:680px">
+    擅长从市场洞察中提炼产品机会点，将工业设计、视觉叙事与实现可行性结合，形成可展示、可沟通、可迭代的设计成果。覆盖产品设计、品牌视觉、CMF 研究、插画创作等多个方向。
+  </p>
+</section>
 
-          if(project.sections){
-            /* Project with sub-sections (NIO ES8) */
-            project.sections.forEach(function(section){
-              var themeClass=section.isTheme?" theme":"";
-              mediaHtml+='<div class="sub-header'+themeClass+'">';
-              mediaHtml+='<h4>'+section.titleZh+'<small>'+section.titleEn+'</small></h4>';
-              if(section.desc)mediaHtml+='<p>'+section.desc+'</p>';
-              mediaHtml+='</div>';
-              mediaHtml+='<div class="gallery-grid">';
-              section.imgs.forEach(function(imgFile){
-                var src="./"+section.dir+"/"+imgFile;
-                mediaHtml+='<figure class="media-item">'+imgTag(src,section.titleZh+" "+imgFile)+'</figure>';
-              });
-              mediaHtml+='</div>';
-            });
-          } else {
-            /* Standard project */
-            var galleryImages=project.images.filter(function(src){return src!==project.cover});
-            mediaHtml+='<figure class="media-item cover-figure">'+imgTag(project.cover,project.titleZh+" cover")+'</figure>';
-            mediaHtml+='<div class="gallery-grid">';
-            galleryImages.forEach(function(src,i){
-              mediaHtml+='<figure class="media-item">'+imgTag(src,project.titleZh+" image "+(i+2))+'</figure>';
-            });
-            mediaHtml+='</div>';
-          }
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 Portfolio. All rights reserved.</p>
+</footer>
 
-          card.innerHTML='<div class="project-inner">'+
-            '<div class="project-content">'+
-              '<h3 class="project-title">'+project.titleZh+'<small>'+project.titleEn+'</small></h3>'+
-              '<p class="project-summary"><strong>ZH:</strong> '+project.summaryZh+'</p>'+
-              '<p class="project-summary"><strong>EN:</strong> '+project.summaryEn+'</p>'+
-              '<ul class="highlights">'+project.highlights.map(function(x){return '<li>'+x+'</li>'}).join("")+'</ul>'+
-              (project.awardNote?'<div class="award-note">'+project.awardNote+'</div>':'')+
-            '</div>'+
-            '<div class="project-media"><div class="media-list">'+mediaHtml+'</div></div>'+
-          '</div>';
+<!-- Detail Overlay -->
+<div class="overlay" id="overlay">
+  <button class="overlay-close" id="overlayClose">×</button>
+  <div class="overlay-content" id="overlayContent"></div>
+</div>
 
-          projectRoot.appendChild(card);
-        });
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">×</button>
+  <img id="lbImg" src="" alt="" />
+</div>
+
+<script>
+/* ================================================================
+   PROJECTS DATA
+   1.蔚来ES8 2.Porcelain 3.智能小提琴 4.宠物心脏检测仪
+   5.昆德拉 6.咖啡品牌 7.善琏汉字艺术 8.桌面神龛
+
+   NIO CMF image mapping (verified by reading each image):
+   img01: Cover (COLOR & TRIM DESIGN ANALYSIS + ES8 car)
+   品牌调研: img06(品牌概述), img07(品牌风格 纯粹/温度/未来)
+   CMF策略调研benchmark: img08(外饰CMF), img09(内饰CMF), img10(竞品分析BENCHMARKING)
+   宏观趋势调研: img02(趋势分析4趋势), img11(用户调研USER INSIGHTS), img12(用户画像USER PERSONA), img13(趋势分析4宏观趋势)
+   色彩趋势调研: img03(WGSN2026矩阵青), img04(Radiant Earth WGSN2028), img05(Cocoa Powder可可棕)
+   ================================================================ */
+const projects=[
+  {id:"nio-es8",num:"01",title:"蔚来 ES8 CMF 设计研究",en:"NIO ES8 CMF Design Research",
+   cover:"./09_nio_cmf/img01.jpg",
+   desc:"围绕蔚来「纯粹、温度、未来」的品牌风格基因，系统分析 ES8 外饰「高级灰」与内饰莫兰迪色彩策略，结合竞品对标、用户画像与 WGSN 趋势，输出完整 CMF 研究框架，并延伸至三套主题内饰方案。",
+   highlights:["品牌研究: 蔚来「纯粹 / 温度 / 未来」风格解码","研究方法: 竞品对标 + 用户画像 + WGSN 年度色趋势","输出成果: 4 大调研模块 + 3 套 CMF 主题内饰方案","能力覆盖: 品牌调研 → CMF Benchmark → 趋势研究 → 方案落地"],
+   sections:[
+     {zh:"品牌调研",en:"Brand Research",desc:"蔚来品牌概述与风格基因解码",theme:false,dir:"09_nio_cmf",imgs:["img06.jpg","img07.jpg"]},
+     {zh:"CMF 策略调研 Benchmark",en:"CMF Strategy Benchmark",desc:"外饰/内饰 CMF 分析 + 竞品对标",theme:false,dir:"09_nio_cmf",imgs:["img08.jpg","img09.jpg","img10.jpg"]},
+     {zh:"宏观趋势调研",en:"Macro Trend Research",desc:"趋势分析 + 用户调研 + 用户画像",theme:false,dir:"09_nio_cmf",imgs:["img02.jpg","img11.jpg","img12.jpg","img13.jpg"]},
+     {zh:"色彩趋势调研",en:"Color Trend Research",desc:"WGSN 年度色预测: 矩阵青(2026) / 发光大地(2028) / 可可棕",theme:false,dir:"09_nio_cmf",imgs:["img03.jpg","img04.jpg","img05.jpg"]},
+     {zh:"鎏金匠心 CMF 主题方案",en:"Crafted Saddle Luxury",desc:"焦糖金穿孔 Nappa + 深咖麂皮 + 烟熏软木 + 深胡桃木",theme:true,dir:"10_cmf_saddle",imgs:["img01.jpg","img02.jpg","img03.jpg","img04.jpg","img05.jpg","img06.jpg"]},
+     {zh:"北欧迷雾 CMF 主题方案",en:"Nordic Mist",desc:"压缩羊毛毡 + 漂白白蜡木 + 冷灰石材 + 半透明磨砂树脂",theme:true,dir:"11_cmf_nordic",imgs:["img01.jpg","img02.jpg","img03.jpg","img04.jpg","img05.jpg","img06.jpg","img07.jpg"]},
+     {zh:"咏叹调 CMF 主题方案",en:"Crimson Aria",desc:"石榴红双面缎面针织 + 香槟金 PVD 金属 + 白色蕾丝绣花",theme:true,dir:"12_cmf_aria",imgs:["img01.jpg","img02.jpg","img03.jpg","img04.jpg","img05.jpg"]}
+   ]},
+
+  {id:"porcelain",num:"02",title:"Serene Porcelain 陶瓷酒瓶设计",en:"Serene Porcelain Bottle Design",
+   cover:"./04_porcelain/img01.jpg",
+   desc:"Serene Porcelain 品牌手册与酒瓶设计项目，围绕「醉翁之意」主题开展陶瓷酒瓶、分酒器、酒杯成套化造型与表面设计，深入研究釉色、肌理与烧成工艺，参赛作品获中国酒器产业协会优秀奖。",
+   highlights:["奖项成果: 国家级陶瓷酒器设计赛事优秀奖","造型范围: 品牌手册 + 酒瓶、分酒器、酒杯成套化","表面语言: 釉面、纹样、陶瓷肌理表达","能力迁移: 材质研究可延展至汽车内饰 CMF"],
+   awardNote:"中国酒器产业协会·优秀奖",
+   dir:"04_porcelain",imgs:["img01.jpg","img02.jpg","img03.jpg","img04.jpg","img05.jpg","img06.jpg","img07.jpg","img08.jpg","img09.jpg","img10.jpg","img11.jpg","img12.jpg"]},
+
+  {id:"smart-violin",num:"03",title:"Lumivox 智能小提琴",en:"Lumivox Smart Violin",
+   cover:"./01_violin/img01.jpg",
+   desc:"Lumivox 光音——面向小提琴初学者的智能学习系统。从用户调研、痛点拆解到低保真原型与高保真 UI 输出，完整呈现从 63% 放弃率洞察到 LED 智能指板、动作传感器、实时音准可视化与社区激励的产品设计链路。",
+   highlights:["用户调研: 512 份问卷 + 3 类用户画像","痛点拆解: 无品格定位、弓控挑战、缺乏反馈","功能架构: 智能LED指板 + 动作传感器 + 音准可视化","设计产出: 低保真原型 + 故事板 + 9 屏高保真 UI"],
+   dir:"01_violin",imgs:["img01.jpg","img02.jpg","img03.jpg","img04.jpg","img05.jpg","img06.jpg","img07.jpg","img08.jpg","img09.jpg","img10.jpg"]},
+
+  {id:"pet-cardiac",num:"04",title:"宠物心脏检测仪",en:"Pet Cardiac Diagnostics Device",
+   cover:"./03_pet_cardiac/img01.jpg",
+   desc:"调研宠物医疗市场现状，以心跳异常难察觉、检测流程繁琐、费用昂贵为突破口，设计小型化与便携化产品。MVP 在 CES 获得海外广泛宣传。",
+   highlights:["问题切入: 难觉察 + 流程繁琐 + 费用高","方案特征: 非接触监测、居家可用、数据可读","系统闭环: 硬件 + App + ECG/AI 可视化","传播成果: MVP 在 CES 获海外关注"],
+   dir:"03_pet_cardiac",imgs:["img01.jpg","img02.jpg","img03.jpg","img04.jpg","img05.jpg"]},
+
+  {id:"kundera",num:"05",title:"昆德拉系列插画作品",en:"Kundera Series Illustration",
+   cover:"./08_kundera/img01.jpg",
+   desc:"以米兰·昆德拉文学为主题的个人插画系列，围绕「Kitsch 媚俗」「ES MUSS SEIN 必须如此」等核心概念，用蜡笔涂鸦语言转译《不能承受的生命之轻》等作品的意象。",
+   highlights:["主题脉络: 昆德拉文学意象的视觉转译","概念表达: 「Kitsch 媚俗」与「ES MUSS SEIN」","媒介语言: 蜡笔 / 油画棒手绘涂鸦质感","色彩特征: 红蓝黄高饱和三原色体系"],
+   dir:"08_kundera",imgs:["img01.jpg","img02.jpg","img03.jpg","img04.jpg","img05.jpg"]},
+
+  {id:"touch-coffee",num:"06",title:"Touch Coffee 咖啡品牌设计",en:"Touch Coffee Brand Identity",
+   cover:"./05_coffee/img01.jpg",
+   desc:"受「指尖触感温度」启发，打造兼具亲密感与放松氛围的咖啡品牌体验。主色调采用粉雾渐变色，柔和烟粉色营造温暖质感。",
+   highlights:["品牌概念: 「Touch to feel the warmth」","视觉语言: 手部插画 × 烟雾曲线 × 咖啡豆","色彩体系: 粉雾渐变主色调","应用范围: 海报、名片、包装袋、外带杯"],
+   dir:"05_coffee",imgs:["img01.jpg","img02.jpg","img03.jpg"]},
+
+  {id:"shanlian-art",num:"07",title:"善琏汉字艺术",en:"Shanlian Character Art",
+   cover:"./06_shanlian/img01.jpg",
+   desc:"以湖州善琏湖笔非遗文化为核心的文化艺术项目，涵盖 2024 年港澳青少年汉字艺术与非遗多元体验活动系列文化海报、品牌衍生设计，以及矿泉水包装、T 恤、帆布袋等文旅周边。",
+   highlights:["活动主题: 港澳青少年汉字艺术与非遗体验","核心标语: 「文明·传承与未来希望」","视觉手法: 水墨大写意 + 解构式汉字排版","文创周边: 矿泉水包装、T 恤、帆布袋、棒球帽"],
+   sections:[
+     {zh:"善琏汉字艺术研究院",en:"Shanlian Character Art Institute",desc:"文化海报与品牌设计",theme:false,dir:"06_shanlian",imgs:["img01.jpg"]},
+     {zh:"湖笔小镇品牌设计",en:"Hubi Town Brand Design",desc:"品牌衍生与文创周边",theme:false,dir:"07_hubi_town",imgs:["img01.jpg","img02.jpg"]}
+   ]},
+
+  {id:"desktop-shrine",num:"08",title:"桌面神龛",en:"Desktop Shrine",
+   cover:"./02_shrine/img04.jpg",
+   desc:"结合 2025 热门玄学主题与年轻人佛系生活需求，提出「数据 + 信仰」产品模式，以运势、开光、占卜为核心功能方向，设计卡通化桌面小佛龛。",
+   highlights:["趋势结合: 年轻人情绪需求与玄学语境","产品定位: 桌面陪伴型情绪疗愈装置","体验方向: 运势、占卜与仪式感交互","视觉特征: 微缩建筑感与氛围灯效"],
+   dir:"02_shrine",imgs:["img01.jpg","img02.jpg","img03.jpg","img04.jpg","img05.jpg","img06.jpg"]}
+];
+
+/* === Rendering === */
+const grid=document.getElementById("grid");
+const overlay=document.getElementById("overlay");
+const overlayContent=document.getElementById("overlayContent");
+const overlayClose=document.getElementById("overlayClose");
+const lightbox=document.getElementById("lightbox");
+const lbImg=document.getElementById("lbImg");
+const lbClose=document.getElementById("lbClose");
+
+/* Render project cards */
+function renderGrid(){
+  projects.forEach(function(p,i){
+    var card=document.createElement("div");
+    card.className="card";
+    card.style.transitionDelay=(i*60)+"ms";
+    card.innerHTML=
+      '<div class="card-img"><img src="'+p.cover+'" alt="'+p.title+'" loading="lazy" onerror="this.src=\'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23F2F0EB%22 width=%22400%22 height=%22300%22/%3E%3C/svg%3E\'"/></div>'+
+      '<div class="card-body">'+
+        '<div class="card-title">'+p.title+'</div>'+
+        '<div class="card-sub">'+p.en+'</div>'+
+      '</div>'+
+      '<div class="card-num">'+p.num+'</div>';
+    card.addEventListener("click",function(){openDetail(p)});
+    grid.appendChild(card);
+  });
+}
+
+/* Open detail overlay */
+function openDetail(p){
+  var html='';
+
+  /* Cover */
+  html+='<div class="detail-hero">';
+  html+='<div class="detail-cover"><img src="'+p.cover+'" alt="'+p.title+'" onerror="this.style.display=\'none\'"/></div>';
+  html+='<div class="detail-title">'+p.title+'</div>';
+  html+='<div class="detail-en">'+p.en+'</div>';
+  html+='<div class="detail-desc">'+p.desc+'</div>';
+  html+='<ul class="detail-highlights">';
+  p.highlights.forEach(function(h){html+='<li>'+h+'</li>'});
+  html+='</ul>';
+  if(p.awardNote)html+='<div style="margin:16px 0;padding:12px 16px;border:1px dashed #D4A574;border-radius:10px;background:#fffaf1;color:#584419;font-size:.9rem">'+p.awardNote+'</div>';
+  html+='</div>';
+
+  /* Sections */
+  if(p.sections){
+    p.sections.forEach(function(s){
+      var themeClass=s.theme?" theme":"";
+      html+='<div class="detail-section'+themeClass+'">';
+      html+='<h3>'+s.zh+'</h3>';
+      html+='<div class="section-en">'+s.en+'</div>';
+      if(s.desc)html+='<p class="section-desc">'+s.desc+'</p>';
+      html+='<div class="detail-grid">';
+      s.imgs.forEach(function(img,i){
+        var full=(s.imgs.length===1||i===0&&s.imgs.length<=2)?" full":"";
+        html+='<div class="img-wrap'+full+'"><img src="./'+s.dir+'/'+img+'" alt="'+s.zh+' '+(i+1)+'" loading="lazy" data-lb="./'+s.dir+'/'+img+'" onerror="this.style.display=\'none\'"/></div>';
+      });
+      html+='</div>';
+      html+='</div>';
+    });
+  } else if(p.imgs){
+    html+='<div class="detail-section">';
+    html+='<h3>作品图片</h3>';
+    html+='<div class="section-en">Project Gallery</div>';
+    html+='<div class="detail-grid">';
+    p.imgs.forEach(function(img,i){
+      var full=(i===0)?" full":"";
+      html+='<div class="img-wrap'+full+'"><img src="./'+p.dir+'/'+img+'" alt="'+p.title+' '+(i+1)+'" loading="lazy" data-lb="./'+p.dir+'/'+img+'" onerror="this.style.display=\'none\'"/></div>';
+    });
+    html+='</div>';
+    html+='</div>';
+  }
+
+  overlayContent.innerHTML=html;
+
+  /* Attach lightbox click handlers */
+  overlayContent.querySelectorAll("img[data-lb]").forEach(function(img){
+    img.addEventListener("click",function(){
+      lbImg.src=this.getAttribute("data-lb");
+      lightbox.classList.add("show");
+    });
+  });
+
+  overlay.classList.add("open");
+  document.body.style.overflow="hidden";
+  overlay.scrollTop=0;
+}
+
+/* Close detail */
+function closeDetail(){
+  overlay.classList.remove("open");
+  document.body.style.overflow="";
+}
+
+/* Lightbox close */
+lbClose.addEventListener("click",function(){lightbox.classList.remove("show")});
+lightbox.addEventListener("click",function(e){if(e.target===lightbox)lightbox.classList.remove("show")});
+
+overlayClose.addEventListener("click",closeDetail);
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape"){
+    if(lightbox.classList.contains("show"))lightbox.classList.remove("show");
+    else if(overlay.classList.contains("open"))closeDetail();
+  }
+});
+
+/* Scroll reveal for cards */
+function setupReveal(){
+  var cards=document.querySelectorAll(".card");
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+        obs.unobserve(entry.target);
       }
+    });
+  },{threshold:0.1,rootMargin:"0px 0px -60px 0px"});
+  cards.forEach(function(c){obs.observe(c)});
+}
 
-      function setupImageExpand(){
-        document.querySelectorAll("img[data-expandable='true']").forEach(function(img){
-          img.addEventListener("click",function(){openLightbox(img.src,img.alt)});
-        });
-        lightboxClose.addEventListener("click",closeLightbox);
-        lightbox.addEventListener("click",function(e){if(e.target===lightbox)closeLightbox()});
-        document.addEventListener("keydown",function(e){if(e.key==="Escape"&&lightbox.classList.contains("show"))closeLightbox()});
-      }
+/* Header scroll effect */
+function setupHeader(){
+  var header=document.getElementById("header");
+  window.addEventListener("scroll",function(){
+    if(window.scrollY>60)header.classList.add("scrolled");
+    else header.classList.remove("scrolled");
+  });
+}
 
-      function setupReveal(){
-        var revealItems=document.querySelectorAll(".reveal");
-        var observer=new IntersectionObserver(function(entries){
-          entries.forEach(function(entry){
-            if(entry.isIntersecting){entry.target.classList.add("show");observer.unobserve(entry.target)}
-          });
-        },{threshold:0.1,rootMargin:"0px 0px -40px 0px"});
-        revealItems.forEach(function(el){observer.observe(el)});
-        /* Fallback: reveal everything after 2s */
-        setTimeout(function(){document.body.classList.add("reveal-fallback")},2000);
-      }
+/* Entrance animation */
+function setupEntrance(){
+  setTimeout(function(){
+    document.getElementById("entrance").classList.add("done");
+  },1200);
+}
 
-      function setupScrollSpy(){
-        var links=[...document.querySelectorAll(".nav a")];
-        var idToLink=new Map(links.map(function(link){return [link.getAttribute("href").slice(1),link]}));
-        var sections=[...document.querySelectorAll("main section[id], .project-card[id]")];
-        var observer=new IntersectionObserver(function(entries){
-          entries.forEach(function(entry){
-            if(!entry.isIntersecting)return;
-            links.forEach(function(link){link.classList.remove("active")});
-            var target=idToLink.get(entry.target.id);
-            if(target)target.classList.add("active");
-          });
-        },{threshold:0.3});
-        sections.forEach(function(section){observer.observe(section)});
-      }
-
-      renderProjects(projects);
-      setupImageExpand();
-      setupReveal();
-      setupScrollSpy();
-    </script>
-  </body>
+/* Init */
+renderGrid();
+setupReveal();
+setupHeader();
+setupEntrance();
+</script>
+</body>
 </html>
