@@ -228,7 +228,16 @@ body[data-state="exploding"] .exp-core{
   8%{width:60px;height:60px;opacity:1;filter:blur(0) brightness(1)}
   25%{width:300px;height:300px;opacity:1;filter:blur(0) brightness(1.5)}
   55%{width:700px;height:700px;opacity:.9;filter:blur(5px) brightness(2)}
-  100%{width:1800px;height:1800px;opacity:0;filter:blur(30px) brightness(3)}
+  100%{width:1400px;height:1400px;opacity:0;filter:blur(30px) brightness(3)}
+}
+@media(max-width:560px){
+  @keyframes nuclearCore{
+    0%{width:0;height:0;opacity:0}
+    10%{width:40px;height:40px;opacity:1;filter:blur(0) brightness(1)}
+    30%{width:180px;height:180px;opacity:1;filter:blur(0) brightness(1.5)}
+    60%{width:400px;height:400px;opacity:.8;filter:blur(5px) brightness(2)}
+    100%{width:900px;height:900px;opacity:0;filter:blur(20px) brightness(3)}
+  }
 }
 
 /* Flash overlay */
@@ -275,7 +284,16 @@ body[data-state="exploding"] .exp-shockwave:nth-child(4){
   0%{width:0;height:0;opacity:1;border-width:4px}
   30%{opacity:.7;border-width:3px}
   60%{opacity:.3;border-width:1.5px}
-  100%{width:1600px;height:1600px;opacity:0;border-width:0}
+  100%{width:1200px;height:1200px;opacity:0;border-width:0}
+}
+@media(max-width:560px){
+  .exp-shockwave:nth-child(n+3){display:none}
+  .exp-glow:nth-child(3){display:none}
+  @keyframes shockwaveExpand{
+    0%{width:0;height:0;opacity:1;border-width:3px}
+    30%{opacity:.6;border-width:2px}
+    100%{width:700px;height:700px;opacity:0;border-width:0}
+  }
 }
 
 /* Radiating light beams (nuclear sun-rays) */
@@ -345,9 +363,14 @@ body[data-state="exploding"] .exp-glow:nth-child(3){
   pointer-events:none;
 }
 
-/* Screen shake */
+/* Screen shake (desktop only) */
 body[data-state="exploding"] .white-layer{
-  animation:whiteBurn .8s ease-out .2s forwards, screenShake .4s ease-out;
+  animation:whiteBurn .8s ease-out .2s forwards;
+}
+@media(min-width:769px){
+  body[data-state="exploding"] .white-layer{
+    animation:whiteBurn .8s ease-out .2s forwards, screenShake .4s ease-out;
+  }
 }
 @keyframes screenShake{
   0%,100%{transform:translate(0,0)}
@@ -875,6 +898,33 @@ body[data-state="void"] .void-hud{opacity:1}
 @media(max-width:560px){
   .cards-grid{grid-template-columns:1fr;gap:16px}
   .debris-number{font-size:2.5rem}
+  .init-glyph{width:40px;height:40px}
+  .void-grid-left,.void-grid-right{display:none}
+  .void-grid-floor,.void-grid-ceiling{width:400%;background-size:120px 120px}
+  .void-perspective{perspective:600px}
+  .void-title{font-size:1rem}
+  .void-subtitle{font-size:.55rem}
+  .void-instruction{font-size:10px}
+  .hud-corner{width:18px;height:18px}
+  .void-hint{font-size:9px}
+  .void-depth-display{font-size:9px}
+  .void-progress-bar{width:100px}
+  .cards-header{padding:60px 16px 24px}
+  .cards-grid{padding:0 16px}
+  .cards-footer{padding:40px 16px 60px}
+  .overlay-content{padding:70px 16px 60px}
+  .detail-grid{gap:8px}
+  .exp-beam{display:none}
+  .void-grain{display:none}
+}
+/* Mobile performance: reduce heavy effects */
+@media(max-width:768px) and (hover:none){
+  .void-grain{display:none}
+  .void-scanlines{display:none}
+  .star{animation-duration:5s!important}
+  .debris-content{animation-duration:10s!important}
+  .wireframe-cube{display:none}
+  .constellation-svg{opacity:.6}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:1ms!important;transition-duration:1ms!important}
@@ -1078,6 +1128,16 @@ function renderName(){
 }
 
 /* ================================================================
+   MOBILE DETECTION
+   ================================================================ */
+var isMobile=(function(){
+  var ua=navigator.userAgent||'';
+  var touch='ontouchstart' in window;
+  var small=window.innerWidth<=768;
+  return (touch && small) || /Android|iPhone|iPad|iPod|Mobile|Windows Phone/i.test(ua);
+})();
+
+/* ================================================================
    INIT
    ================================================================ */
 function initLoading(){
@@ -1085,8 +1145,8 @@ function initLoading(){
   createStars();
   createDebris();
   createConstellations();
-  createExplosionBeams();
-  setTimeout(function(){ setState('idle'); },2200);
+  if(!isMobile) createExplosionBeams();
+  setTimeout(function(){ setState('idle'); }, isMobile?1500:2200);
 }
 
 /* ================================================================
@@ -1128,7 +1188,7 @@ function createExplosionBeams(){
    ================================================================ */
 function createExplosionParticles(){
   var container=document.getElementById('explosionLayer');
-  var count=80;
+  var count=isMobile?25:80;
   for(var i=0;i<count;i++){
     var particle=document.createElement('div');
     particle.className='exp-particle';
@@ -1206,15 +1266,28 @@ function handleWheel(e){
   }
 }
 var touchStartY=0;
-function handleTouchStart(e){ if(currentState==='void') touchStartY=e.touches[0].clientY; }
+var touchStartX=0;
+function handleTouchStart(e){
+  if(currentState==='void'){
+    touchStartY=e.touches[0].clientY;
+    touchStartX=e.touches[0].clientX;
+  }
+}
 function handleTouchMove(e){
   if(currentState!=='void') return;
   e.preventDefault();
-  var delta=touchStartY - e.touches[0].clientY;
+  var deltaY=touchStartY - e.touches[0].clientY;
+  var deltaX=e.touches[0].clientX - touchStartX;
   touchStartY=e.touches[0].clientY;
-  voidDepth += delta*3;
+  touchStartX=e.touches[0].clientX;
+  voidDepth += deltaY*4;
   if(voidDepth<0) voidDepth=0;
   if(voidDepth>VOID_MAX_DEPTH) voidDepth=VOID_MAX_DEPTH;
+  /* On mobile, use touch X movement for perspective instead of mousemove */
+  if(isMobile){
+    targetRY=deltaX*0.3;
+    targetRY=Math.max(-3,Math.min(3,targetRY));
+  }
   updateVoidScene();
   if(voidDepth>=COLLAPSE_THRESHOLD && !collapseTriggered){
     collapseTriggered=true;
@@ -1247,15 +1320,15 @@ function triggerCollapse(){
   flash.appendChild(core);
   setTimeout(function(){ if(core.parentNode) core.parentNode.removeChild(core); },600);
   var stage=document.getElementById('voidStage');
-  stage.style.transition='transform 1.2s cubic-bezier(0.5,0,0.5,1), opacity 1.2s ease, filter 1.2s ease';
+  stage.style.transition='transform 1s cubic-bezier(0.5,0,0.5,1), opacity 1s ease, filter 1s ease';
   stage.style.transform='translateZ(0) scale(0)';
   stage.style.opacity='0';
-  stage.style.filter='blur(25px)';
+  stage.style.filter='blur('+(isMobile?15:25)+'px)';
   setTimeout(function(){
     document.getElementById('sceneVoid').style.display='none';
     setState('cards');
     renderCards();
-  },1300);
+  },isMobile?1000:1300);
 }
 
 /* ================================================================
@@ -1263,7 +1336,8 @@ function triggerCollapse(){
    ================================================================ */
 function createStars(){
   var container=document.getElementById('voidStars');
-  for(var i=0;i<450;i++){
+  var starCount=isMobile?120:450;
+  for(var i=0;i<starCount;i++){
     var star=document.createElement('div');
     star.className='star';
     star.style.left=Math.random()*100+'%';
@@ -1299,9 +1373,8 @@ function createDebris(){
   var depthStep=300;
   projects.forEach(function(p,i){
     var depth=baseDepth + i*depthStep;
-    /* Alternate left/right with increasing offset */
-    var xOffset=(i%2===0?-1:1)*(120+Math.random()*180);
-    var yOffset=(Math.random()-0.5)*250;
+    var xOffset=(i%2===0?-1:1)*(isMobile?(60+Math.random()*80):(120+Math.random()*180));
+    var yOffset=(Math.random()-0.5)*(isMobile?150:250);
     var wrapper=document.createElement('div');
     wrapper.className='debris-wrapper';
     wrapper.style.transform='translate3d('+xOffset+'px,'+yOffset+'px,-'+depth+'px)';
@@ -1406,7 +1479,9 @@ function createConstellations(){
     }
   ];
 
-  constellations.forEach(function(c){
+  /* Mobile: only show 3 constellations instead of 6 */
+  var maxConstellations=isMobile?3:6;
+  constellations.slice(0,maxConstellations).forEach(function(c){
     var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
     svg.setAttribute('class','constellation-svg');
     var width=300, height=200;
