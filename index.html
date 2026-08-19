@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 <title>Echo Fang · 作品档案</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,8 +26,8 @@
   --ease-out:cubic-bezier(.16,1,.3,1);
   --ease-expo:cubic-bezier(.87,0,.13,1);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
 body{
   font-family:"Noto Sans SC","Manrope",sans-serif;
   background:var(--void-bg);
@@ -35,6 +35,7 @@ body{
   font-size:16px;line-height:1.6;
   overflow:hidden;
   transition:background .6s ease;
+  touch-action:manipulation;
 }
 body[data-state="cards"]{overflow:auto;background:var(--void-deep)}
 a{color:inherit;text-decoration:none}
@@ -900,8 +901,7 @@ body[data-state="void"] .void-hud{opacity:1}
   .debris-number{font-size:2.5rem}
   .init-glyph{width:40px;height:40px}
   .void-grid-left,.void-grid-right{display:none}
-  .void-grid-floor,.void-grid-ceiling{width:400%;background-size:120px 120px}
-  .void-perspective{perspective:600px}
+  .void-grid-floor,.void-grid-ceiling{display:none}
   .void-title{font-size:1rem}
   .void-subtitle{font-size:.55rem}
   .void-instruction{font-size:10px}
@@ -917,14 +917,38 @@ body[data-state="void"] .void-hud{opacity:1}
   .exp-beam{display:none}
   .void-grain{display:none}
 }
-/* Mobile performance: reduce heavy effects */
+/* ====== MOBILE LIGHTWEIGHT MODE (2D fallback, no 3D engine) ====== */
 @media(max-width:768px) and (hover:none){
+  /* Kill all 3D compositing — the #1 cause of mobile jank */
+  .void-perspective{
+    perspective:none!important;
+    transform-style:flat!important;
+    transform:none!important;
+  }
+  .void-stage{
+    transform-style:flat!important;
+    transition:opacity .6s ease,filter .6s ease,transform .6s ease!important;
+  }
+  /* Remove 3D grid planes entirely */
+  .void-grid-floor,.void-grid-ceiling,
+  .void-grid-left,.void-grid-right{display:none!important}
+  /* Remove debris and constellations (heavy DOM in 3D space) */
+  .void-debris-container{display:none!important}
+  .void-constellations{display:none!important}
+  /* Flatten title block to 2D */
+  .void-title-block{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%)!important;
+    transform-style:flat!important;
+  }
+  /* Stars: fewer, slower, opacity-only animation */
+  .star{will-change:opacity;animation-duration:6s!important}
+  /* Remove grain / scanlines */
   .void-grain{display:none}
   .void-scanlines{display:none}
-  .star{animation-duration:5s!important}
-  .debris-content{animation-duration:10s!important}
   .wireframe-cube{display:none}
-  .constellation-svg{opacity:.6}
+  /* Touch action */
+  .scene-void{touch-action:none}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:1ms!important;transition-duration:1ms!important}
@@ -946,7 +970,7 @@ body[data-state="void"] .void-hud{opacity:1}
         <div class="void-title">作品档案</div>
         <div class="void-divider"></div>
         <div class="void-subtitle">ARCHIVE · SIGNAL RECOVERY</div>
-        <div class="void-instruction">滚动深入空间 · 移动鼠标改变视角</div>
+        <div class="void-instruction">向上滑动深入空间</div>
       </div>
       <div class="void-debris-container" id="voidDebris"></div>
       <div class="void-constellations" id="voidConstellations"></div>
@@ -1143,27 +1167,37 @@ var isMobile=(function(){
 function initLoading(){
   renderName();
   createStars();
-  createDebris();
-  createConstellations();
-  if(!isMobile) createExplosionBeams();
-  setTimeout(function(){ setState('idle'); }, isMobile?1500:2200);
+  if(!isMobile){
+    createDebris();
+    createConstellations();
+    createExplosionBeams();
+  }
+  setTimeout(function(){ setState('idle'); }, isMobile?1200:2200);
 }
 
 /* ================================================================
-   CLICK TO EXPLODE
+   CLICK / TAP TO EXPLODE
    ================================================================ */
-document.addEventListener('click',function(e){
+function doExplode(){
   if(currentState!=='idle') return;
   createExplosionParticles();
   setState('exploding');
   setTimeout(function(){ setState('void'); },900);
-});
+}
+document.addEventListener('click',doExplode);
+/* Mobile: touchend is faster than click (no 300ms delay) */
+if('ontouchend' in window){
+  document.addEventListener('touchend',function(e){
+    if(currentState==='idle'){
+      e.preventDefault();
+      doExplode();
+    }
+  },{passive:false});
+}
 document.addEventListener('keydown',function(e){
   if(currentState==='idle' && (e.key==='Enter'||e.key===' ')){
     e.preventDefault();
-    createExplosionParticles();
-    setState('exploding');
-    setTimeout(function(){ setState('void'); },900);
+    doExplode();
   }
 });
 
@@ -1188,7 +1222,7 @@ function createExplosionBeams(){
    ================================================================ */
 function createExplosionParticles(){
   var container=document.getElementById('explosionLayer');
-  var count=isMobile?25:80;
+  var count=isMobile?12:80;
   for(var i=0;i<count;i++){
     var particle=document.createElement('div');
     particle.className='exp-particle';
@@ -1238,6 +1272,8 @@ document.addEventListener('mousemove',function(e){
   }
 });
 function animatePerspective(){
+  /* Mobile: skip 3D perspective loop entirely — saves a continuous rAF */
+  if(isMobile) return;
   currentRX += (targetRX - currentRX)*0.05;
   currentRY += (targetRY - currentRY)*0.05;
   var persp=document.getElementById('voidPerspective');
@@ -1250,11 +1286,12 @@ function animatePerspective(){
    ================================================================ */
 var voidDepth=0;
 var VOID_MAX_DEPTH=3000;
-var COLLAPSE_THRESHOLD=2500;
+var COLLAPSE_THRESHOLD=isMobile?1500:2500;
 var collapseTriggered=false;
 
 function handleWheel(e){
   if(currentState!=='void') return;
+  if(isMobile) return; /* mobile uses touch events, not wheel */
   e.preventDefault();
   voidDepth += e.deltaY*2;
   if(voidDepth<0) voidDepth=0;
@@ -1277,17 +1314,12 @@ function handleTouchMove(e){
   if(currentState!=='void') return;
   e.preventDefault();
   var deltaY=touchStartY - e.touches[0].clientY;
-  var deltaX=e.touches[0].clientX - touchStartX;
   touchStartY=e.touches[0].clientY;
   touchStartX=e.touches[0].clientX;
-  voidDepth += deltaY*4;
+  /* Mobile: swipe up = go deeper. Sensitivity tuned for 2D mode. */
+  voidDepth += deltaY*5;
   if(voidDepth<0) voidDepth=0;
   if(voidDepth>VOID_MAX_DEPTH) voidDepth=VOID_MAX_DEPTH;
-  /* On mobile, use touch X movement for perspective instead of mousemove */
-  if(isMobile){
-    targetRY=deltaX*0.3;
-    targetRY=Math.max(-3,Math.min(3,targetRY));
-  }
   updateVoidScene();
   if(voidDepth>=COLLAPSE_THRESHOLD && !collapseTriggered){
     collapseTriggered=true;
@@ -1296,14 +1328,22 @@ function handleTouchMove(e){
 }
 function updateVoidScene(){
   var stage=document.getElementById('voidStage');
-  var shakeX=0, shakeY=0;
-  if(voidDepth > COLLAPSE_THRESHOLD*0.85){
-    var intensity=(voidDepth - COLLAPSE_THRESHOLD*0.85)/(COLLAPSE_THRESHOLD*0.15);
-    shakeX=(Math.random()-0.5)*3*intensity;
-    shakeY=(Math.random()-0.5)*3*intensity;
-  }
-  stage.style.transform='translateZ('+voidDepth.toFixed(1)+'px) translate('+shakeX.toFixed(1)+'px,'+shakeY.toFixed(1)+'px)';
   var progress=Math.min(voidDepth/VOID_MAX_DEPTH,1);
+  /* Mobile: 2D-only — scale + opacity instead of translateZ + 3D shake */
+  if(isMobile){
+    var scale=1 - progress*0.3;
+    var opacity=1 - progress*0.4;
+    stage.style.transform='scale('+scale.toFixed(3)+')';
+    stage.style.opacity=opacity.toFixed(3);
+  }else{
+    var shakeX=0, shakeY=0;
+    if(voidDepth > COLLAPSE_THRESHOLD*0.85){
+      var intensity=(voidDepth - COLLAPSE_THRESHOLD*0.85)/(COLLAPSE_THRESHOLD*0.15);
+      shakeX=(Math.random()-0.5)*3*intensity;
+      shakeY=(Math.random()-0.5)*3*intensity;
+    }
+    stage.style.transform='translateZ('+voidDepth.toFixed(1)+'px) translate('+shakeX.toFixed(1)+'px,'+shakeY.toFixed(1)+'px)';
+  }
   document.getElementById('voidProgress').style.width=(progress*100)+'%';
   document.getElementById('depthValue').textContent=String(Math.floor(voidDepth)).padStart(4,'0');
   if(voidDepth > COLLAPSE_THRESHOLD*0.85) document.getElementById('collapseWarning').classList.add('show');
@@ -1320,15 +1360,22 @@ function triggerCollapse(){
   flash.appendChild(core);
   setTimeout(function(){ if(core.parentNode) core.parentNode.removeChild(core); },600);
   var stage=document.getElementById('voidStage');
-  stage.style.transition='transform 1s cubic-bezier(0.5,0,0.5,1), opacity 1s ease, filter 1s ease';
-  stage.style.transform='translateZ(0) scale(0)';
-  stage.style.opacity='0';
-  stage.style.filter='blur('+(isMobile?15:25)+'px)';
+  if(isMobile){
+    /* Mobile: simple 2D fade, no 3D scale or heavy blur filter */
+    stage.style.transition='opacity .6s ease';
+    stage.style.opacity='0';
+    stage.style.filter='blur(8px)';
+  }else{
+    stage.style.transition='transform 1s cubic-bezier(0.5,0,0.5,1), opacity 1s ease, filter 1s ease';
+    stage.style.transform='translateZ(0) scale(0)';
+    stage.style.opacity='0';
+    stage.style.filter='blur(25px)';
+  }
   setTimeout(function(){
     document.getElementById('sceneVoid').style.display='none';
     setState('cards');
     renderCards();
-  },isMobile?1000:1300);
+  },isMobile?800:1300);
 }
 
 /* ================================================================
@@ -1336,7 +1383,7 @@ function triggerCollapse(){
    ================================================================ */
 function createStars(){
   var container=document.getElementById('voidStars');
-  var starCount=isMobile?120:450;
+  var starCount=isMobile?60:450;
   for(var i=0;i<starCount;i++){
     var star=document.createElement('div');
     star.className='star';
